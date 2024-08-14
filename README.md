@@ -195,4 +195,73 @@ Instruction 8: BEQ R0, R0, 15
 <summary>Lab 4</summary>
 <br>
   
+****Compilation of following code using GCC compiler****
+
+SOURCE CODE:
+```c
+
+#include <stdio.h>
+
+int main() {
+    int peopleInside = 0;
+    int choice;
+
+    while (1) {
+        printf("\n--- People Counter ---\n");
+        printf("1. Person Entered\n");
+        printf("2. Person Exited\n");
+        printf("3. Check Number of People Inside\n");
+        printf("4. Exit Program\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                peopleInside++;
+                printf("A person has entered. Total people inside: %d\n", peopleInside);
+                break;
+            case 2:
+                if (peopleInside > 0) {
+                    peopleInside--;
+                    printf("A person has exited. Total people inside: %d\n", peopleInside);
+                } else {
+                    printf("No one is inside the room!\n");
+                }
+                break;
+            case 3:
+                printf("Number of people inside: %d\n", peopleInside);
+                break;
+            case 4:
+                printf("Exiting the program.\n");
+                return 0;
+            default:
+                printf("Invalid choice! Please enter a valid option.\n");
+        }
+    }
+```
+the following code is compiled with below commands
+
+```
+gcc peoplecounter.c
+./a.out
+
+```
+
+
+![gcc out](https://github.com/user-attachments/assets/1d8edeb1-e5af-468e-b7f4-8e232251ca64)
+
+now the same code is compiled with riscv compiler with the following commands
+
+
+
+```
+riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i peoplecounter.c
+spike pk a.out
+
+```
+
+the following screenshot is attatched with riscv compilation
+
+![riscv](https://github.com/user-attachments/assets/6128b0de-be10-4514-91df-21c3c95b038e)
+
 
