@@ -263,5 +263,75 @@ spike pk a.out
 the following screenshot is attatched with riscv compilation
 
 ![riscv](https://github.com/user-attachments/assets/6128b0de-be10-4514-91df-21c3c95b038e)
+</details>
+
+<details>
+<summary>Lab 5</summary>
+<br>
+  
+## Five staged pipeline riscv core 
+
+  This lab session is about building 5 stage pipeline riscv5 core using tl verilog in makerchip online simulator
+  
+## Tools and languages used:
+
+  1.Maker chip EDA
+  
+  2.tl verilog
+  
+  TL-Verilog, or Transaction-Level Verilog, is an extension of the Verilog HDL (Hardware Description Language) designed to simplify the modeling of complex systems. Here are five key points about TL-Verilog:
+
+1. **High-Level Abstraction**: TL-Verilog provides a higher level of abstraction compared to traditional Verilog. It focuses on the transaction level of design, which is more concerned with the interactions and data exchanges between modules rather than their detailed internal structure. This abstraction helps in modeling complex systems more efficiently.
+
+2. **Enhanced Modeling Capabilities**: TL-Verilog introduces constructs for modeling transactions and communication protocols more naturally. This includes support for transaction-level modeling constructs such as `tlm::tlm_sync_enum` and `tlm::tlm_phase`, which simplify the description of data transfers and communication sequences between modules.
+
+3. **Simplified Verification**: TL-Verilog's abstraction helps in creating more straightforward and intuitive testbenches. By focusing on the high-level interactions and transactions, it becomes easier to write and understand testbenches, which can lead to improved verification productivity and effectiveness.
+
+4. **Integration with SystemC**: TL-Verilog is often used in conjunction with SystemC, another high-level modeling language. SystemC provides a rich set of features for system-level modeling, and TL-Verilog can be integrated with SystemC to leverage its strengths in transaction-level modeling while maintaining compatibility with existing Verilog designs.
+
+5. **Improved Design Productivity**: By using TL-Verilog, designers can achieve faster design and verification cycles. The higher level of abstraction allows for quicker modeling of complex systems and reduces the need for low-level implementation details, which can lead to increased productivity and more efficient development processes.
+
+Overall, TL-Verilog is valuable for managing complex system designs and improving the efficiency of both design and verification processes.
+
+## And gate implementation:
+![and gate](https://github.com/user-attachments/assets/a12b575d-6f8b-450a-b1da-b51e3b7c6fc8)
+
+## OR gate implementation:
+![orgate](https://github.com/user-attachments/assets/cb375f42-efa0-4214-9cdf-e3244168cb62)
+
+## inverter gate implementation:
+
+![inverter](https://github.com/user-attachments/assets/a4f0c6ab-d970-4171-acb5-9ff33eefb074)
+
+## 2:1 mux implementation:
+
+![2;1 mux](https://github.com/user-attachments/assets/180273c9-3d3d-4b76-825f-8405630e9390)
+
+## 2:1 mux vector implementation:
+
+![mux vector](https://github.com/user-attachments/assets/123f9005-398a-4ca6-a5f0-4b9f701e4561)
+
+##SEQUENTIAL CIRCUIT:
+
+## FIBINACCI SERIES implementation:
+
+![Fabonncci series](https://github.com/user-attachments/assets/372ec569-3021-4201-b4bb-76c33014e74f)
+
+## Counter implementation:
+
+![Sequential counter](https://github.com/user-attachments/assets/77e9177a-f42a-487f-be65-1cc69f7bc31b)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
