@@ -321,6 +321,43 @@ Overall, TL-Verilog is valuable for managing complex system designs and improvin
 
 ![Sequential counter](https://github.com/user-attachments/assets/77e9177a-f42a-487f-be65-1cc69f7bc31b)
 
+## Sequential Calculator implementation:
+
+![image](https://github.com/user-attachments/assets/26439db6-23b4-4689-9719-8641115fe0b9)
+
+CODE ANd WAVEFROM VISUALIZATION OF SEQUENTIAL CALCULATOR :
+
+![image](https://github.com/user-attachments/assets/1b2699fa-424a-4111-ad19-1856782a5e58)
+
+## PIPELINING:
+
+1. **Definition**: Pipelining is a technique used in computer architecture to improve instruction throughput. It involves breaking down the execution pathway of instructions into discrete stages, so that multiple instructions can be processed simultaneously at different stages of completion.
+
+2. **Stages**: In a typical pipelined CPU, the stages might include Instruction Fetch (IF), Instruction Decode (ID), Execution (EX), Memory Access (MEM), and Write Back (WB). Each stage performs a part of the instruction's execution process.
+
+3. **Throughput Improvement**: By overlapping the execution of instructions, pipelining increases the instruction throughput, meaning that more instructions are completed in a given time period compared to a non-pipelined processor.
+
+4. **Pipeline Hazards**: There are potential issues that can arise in pipelining, such as data hazards (when an instruction depends on the result of a previous instruction), control hazards (related to branching and jumps), and structural hazards (when hardware resources are insufficient to support all concurrent operations).
+
+5. **Stalling and Bypassing**: To handle pipeline hazards, techniques like stalling (inserting delays), data forwarding (bypassing), and branch prediction are used. These methods help manage the potential delays and ensure smooth operation of the pipeline.
+
+Pipelining is fundamental to modern CPU design, enabling higher performance and efficiency in executing instructions.
+
+## Fibonocci Sequence with pipelining:
+
+![image](https://github.com/user-attachments/assets/21592213-8c06-4aa2-b775-c082b5293058)
+
+## Calculator with  pipelining:
+  Calculator is implemented with pipeling for increasing throughput.
+
+![image](https://github.com/user-attachments/assets/481ce46d-85da-4de0-99f2-d4026f6eae89)
+
+
+
+
+
+
+
 
 
 
