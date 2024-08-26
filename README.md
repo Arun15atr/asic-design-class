@@ -735,6 +735,145 @@ the following waveform contains the values of reg14:
 
 </details>
 
+<details>
+<summary>Lab 6</summary>
+<br>
+  
+# Simulation Workflow: Converting TLV to Verilog with Sandpiper, Creating a Testbench with rvmyth, Running Simulations in Icarus Verilog, and Viewing Results in GTKWave.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# RISC-V Pre-Synthesis Simulation
+
+## Aim
+
+This project aims to demonstrate the comparison of RISC-V pre-synthesis simulation outputs using Icarus Verilog, GTKWave, and Makerchip. The RISC-V processor is designed using TL-Verilog in the Makerchip IDE, converted to Verilog using the Sandpiper-SaaS compiler, and then simulated using Icarus Verilog and GTKWave.
+
+## Prerequisites
+
+Before you begin, ensure you have the following tools and libraries installed:
+
+- **Python 3**
+- **Python3-venv**: For creating isolated Python environments
+- **pip**: Python package installer
+- **Git**: Version control system
+- **Icarus Verilog**: Open-source Verilog simulator
+- **GTKWave**: Waveform viewer
+- **Docker**: For containerization support
+- **Sandpiper-SaaS**: TL-Verilog to Verilog compiler
+
+## Installation Instructions
+
+### 1. Install Required Packages
+
+Run the following commands to install necessary packages:
+
+```bash
+sudo apt update
+sudo apt install -y make python python3 python3-pip git iverilog gtkwave docker.io
+sudo chmod 666 /var/run/docker.sock
+sudo apt-get install python3-venv
+```
+
+### 2. Set Up Python Environment
+
+Create a Python virtual environment and install required Python packages:
+
+```bash
+cd ~
+python3 -m venv .venv
+source ~/.venv/bin/activate
+pip install pyyaml click sandpiper-saas
+```
+
+### 3. Clone the Repository
+
+Clone the VSDBabySoC repository:
+
+```bash
+git clone https://github.com/manili/VSDBabySoC.git
+```
+
+### 4. Replace TL-Verilog File
+
+Replace the existing `.tlv` file in the `VSDBabySoC/src/module` directory with your custom RISC-V `.tlv` file. This file should contain your RISC-V processor design.
+
+### 5. Navigate to the Project Directory
+
+Change to the cloned repository directory:
+
+```bash
+cd VSDBabySoC
+```
+
+### 6. Convert TL-Verilog to Verilog
+
+Use Sandpiper-SaaS to convert your TL-Verilog design to Verilog:
+
+```bash
+sandpiper-saas -i ./src/module/*.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir ./src/module/
+```
+
+### 7. Create Pre-Synthesis Simulation File
+
+Generate the pre-synthesis simulation file:
+
+```bash
+make pre_synth_sim
+```
+
+### 8. Compile and Simulate RISC-V Design
+
+Compile the Verilog files and run the simulation:
+
+```bash
+iverilog -o output/pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module
+```
+
+### 9. Run the Simulation Output
+
+Execute the simulation to generate the waveform:
+
+```bash
+cd output
+./pre_synth_sim.out
+```
+
+### 10. View Simulation Results with GTKWave
+
+Open the waveform file in GTKWave:
+
+```bash
+gtkwave pre_synth_sim.vcd
+```
+
+### 11. Analyze the Waveforms
+
+Use GTKWave to analyze and compare the output waveforms to validate the RISC-V processor design.
+
+## GTKWave Output Waveform
+
+- **Clock Signal**
+- **Reset Signal**
+- **10-bit Output Showing Incremental Values**
+
+## Comparison of Output Waveforms
+
+
+Review and compare waveform outputs from  Makerchip and GTKwave  to ensure design accuracy.
+
+![image](https://github.com/user-attachments/assets/d8ba7ca9-4864-40f8-a45e-e25a5f9dd238)
+
+![WhatsApp Image 2024-08-27 at 12 58 00 AM](https://github.com/user-attachments/assets/ba352868-64d1-45f8-ab17-e4b5c7a6bb62)
+
+
+## Conclusion
+
+The waveform outputs from GTKWave and Makerchip match perfectly, validating the accuracy and robustness of the RISC-V processor design.
+
+---
+
+
+
+
 
 
 
