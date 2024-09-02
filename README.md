@@ -870,6 +870,34 @@ Review and compare waveform outputs from  Makerchip and GTKwave  to ensure desig
 The waveform outputs from GTKWave and Makerchip match perfectly, validating the accuracy and robustness of the RISC-V processor design.
 
 ---
+</details>
+
+
+<details>
+<summary>Lab 7</summary>
+<br>
+
+## Integration of Peripherals for Digital-to-Analog Conversion Using DAC and PLL 🎛️🔄
+
+In this assignment, we integrate two essential peripherals to convert digital signals to analog output: **Phase-Locked Loop (PLL)** and **Digital-to-Analog Converter (DAC)**.
+
+### **Phase-Locked Loop (PLL) ⏱️🔄**
+The onboard crystal oscillator provides a clock frequency between 12-20 MHz. Since our processor operates around 100 MHz, we need to increase this lower frequency. The PLL performs this function by taking the crystal oscillator's clock as input and producing a higher frequency clock for our RISC-V core, labeled as `CPU_clk_GOUR_a0`.
+
+### **Digital-to-Analog Converter (DAC) 🔢➡️🔊**
+While our processor deals with digital signals, communication in the real world occurs in analog form. To transform the digital output from the RISC-V core into an analog signal, we use the DAC IP.
+
+### **Commands Used** 🖥️
+```bash
+iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+cd output/
+./pre_synth_sim.out
+gtkwave pre_synth_sim.vcd
+```
+
+
+</details>
+
 
 
 
