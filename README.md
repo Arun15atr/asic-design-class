@@ -894,6 +894,12 @@ cd output/
 ./pre_synth_sim.out
 gtkwave pre_synth_sim.vcd
 ```
+the following screen shots displays the commands and outputs of the assignment
+
+![image](https://github.com/user-attachments/assets/79e0b806-076e-414c-b296-e3870ea11bab)
+
+
+![Screenshot from 2024-09-02 20-34-46](https://github.com/user-attachments/assets/3a59c5f7-ad72-451f-a77c-30a9afdbf5b1)
 
 
 </details>
