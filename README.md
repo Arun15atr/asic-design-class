@@ -1207,11 +1207,73 @@ The compiled output will be saved as a.out.
 ./a.out
 gtkwave tb_dff_asyncres.vcd
 ```
+By following these steps,we can observe the behavior of the D Flip-Flop with an asynchronous reset in the waveform viewer:
 
 ![image](https://github.com/user-attachments/assets/9628e5bc-50cc-4990-b33d-cd36b541d461)
 
+![image](https://github.com/user-attachments/assets/2b3fa89b-da8b-48a8-a916-d2413b845147)
 
 
+Observation: The waveform shows that when the asynchronous reset is activated (set high), the Q output immediately resets to zero, independent of the clock's positive or negative edge. This illustrates the asynchronous nature of the reset signal.
+
+## 2.D Flip-Flop with Asynchronous Set:
+
+This section illustrates the implementation of a D Flip-Flop with an asynchronous set using Verilog. The design guarantees that when the asynchronous set signal is high, the output Q is immediately set to 1, regardless of the clock signal.
+
+**Verilog Code for Asynchronous Set D Flip-Flop:**
+
+```
+module dff_async_set(input clk, input async_set, input d, output reg q);
+	always@(posedge clk, posedge async_set)
+	begin
+		if(async_set)
+			q <= 1'b1;
+		else
+			q <= d;
+	end
+endmodule
+```
+Testbench Code:
+```
+module tb_dff_async_set; 
+	reg clk, async_set, d;
+	wire q;
+	dff_async_set uut (.clk(clk), .async_set(async_set), .d(d), .q(q));
+
+	initial begin
+		$dumpfile("tb_dff_async_set.vcd");
+		$dumpvars(0, tb_dff_async_set);
+		// Initialize Inputs
+		clk = 0;
+		async_set = 1;
+		d = 0;
+		#3000 $finish;
+	end
+
+	always #10 clk = ~clk;
+	always #23 d = ~d;
+	always #547 async_set = ~async_set; 
+endmodule
+```
+Steps to Run the Simulation:
+
+1.Navigate to the directory containing the Verilog files:
+```
+cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+2.Compile the Verilog code and the testbench using Icarus Verilog:
+```
+iverilog dff_async_set.v tb_dff_async_set.v
+ls
+```
+The output will be saved as a.out.
+3.Run the compiled file and open the waveform in GTKWave:
+```
+./a.out
+gtkwave tb_dff_async_set.vcd
+```
+
+![image](https://github.com/user-attachments/assets/7b64d986-e595-406a-a89a-fb093638b9f4)
 
 
 
