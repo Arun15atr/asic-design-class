@@ -1026,9 +1026,28 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ![image](https://github.com/user-attachments/assets/2abf99b6-57c0-496e-95d7-6788544b7e9a)
 
 
+![image](https://github.com/user-attachments/assets/f243b4e8-ea3b-4481-b270-5c38e92c664f)
+
+# To observe the graphical representation of generated logic :
+
+```
+show
+```
+
+![image](https://github.com/user-attachments/assets/b829aa5d-bc4e-490e-a5c7-d409b7616674)
+
+# TO generate netlist and saving it , netlist file will be generated in the current directory
+```
+write_verilog -noattr good_mux_netlist.v
+!gvim good_mux_netlist.v
+```
+
+![image](https://github.com/user-attachments/assets/829f52f2-4a3e-4d70-9a07-505029e9818f)
 
 
+ </details>
 
+</details>
 
 
 
