@@ -1619,15 +1619,111 @@ module opt_check4(input a, input b, input c, output y);
 	assign y = a ? (b ? ~c : c) : ~c;
 endmodule
 ```
-## **Command Steps for Synthesis:**
+# Steps for Synthesis:
 
-Follow the same steps as for the 2-input AND gate, but with the following modifications:
+1. Navigate to the required directory:
 
-- Use `opt_check4.v` as the Verilog file: `read_verilog opt_check4.v`
-- Synthesize the design using `opt_check4`.
-
+   ```
+   cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+   ```
+2.Launch Yosys:
+```
+yosys
+```
+3.Read the standard cell library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+4.Read the Verilog design files:
+```
+read_verilog opt_check4.v
+```
+5. Synthesize the design:
 ```
 synth -top opt_check4
 ```
+![image](https://github.com/user-attachments/assets/6eea9f58-4659-4e3e-a2a8-64d97ea82d88)
 
+6.Generate the Netlist:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+7.Optimize the Design:
+```
+opt_clean -purge
+```
+8.Visualize the Schematic:
+
+```
+show
+```
+![image](https://github.com/user-attachments/assets/6e15d7e9-bfe0-43bf-b14c-6d2c5b42db20)
+
+##  Multiple Module Optimization - 1:
+
+Verilog Code:
+
+The following Verilog code describes a multi-module design using submodules for logic optimization.
+```
+module sub_module1(input a, input b, output y);
+assign y = a & b;
+endmodule
+
+module sub_module2(input a, input b, output y);
+assign y = a ^ b;
+endmodule
+
+module multiple_module_opt(input a, input b, input c, input d, output y);
+wire n1, n2, n3;
+
+sub_module1 U1 (.a(a), .b(1'b1), .y(n1));
+sub_module2 U2 (.a(n1), .b(1'b0), .y(n2));
+sub_module2 U3 (.a(b), .b(d), .y(n3));
+
+assign y = c | (b & n1);
+endmodule
+```
+Steps for Synthesis:
+1.Navigate to the Directory:
+ ```
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+2.Start the Yosys Tool:
+```
+yosys
+```
+3.Read the Library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+4.Read the Verilog File:
+```
+read_verilog multiple_module_opt.v
+
+
+```
+5. Synthesize the Design:
+```
+synth -top multiple_module_opt
+
+```
+![image](https://github.com/user-attachments/assets/b79eec43-3c93-411a-9187-ef0e9a3b55d7)
+
+6.Generate the Netlist:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+7.Optimize the Design:
+```
+opt_clean -purge
+```
+8.Flattening merges hierarchies:
+```
+flatten
+```
+9.Visualize the Schematic:
+```
+show
+```
+![image](https://github.com/user-attachments/assets/4d2e3a6f-3bee-47dd-a138-884f5b521416)
 
