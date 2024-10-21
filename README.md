@@ -1053,13 +1053,95 @@ write_verilog -noattr good_mux_netlist.v
 
 ## Timing libs, hierarchical vs flat synthesis and efficient flop coding stylesLAB-4:
 
-#LAB-4:
+# LAB-4:
 ```
 sudo -i
 cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/lib
 gvim sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 ![lab4-1](https://github.com/user-attachments/assets/a1d4358f-0ff2-4a38-b62a-4499db58073d)
+
+The .lib file contains essential information about the process technology used, such as 130nm technology, along with process conditions like temperature and voltage. It also outlines various constraints, including variable units and the specific technology type. For instance:
+
+- `technology("cmos")`: Indicates the technology is CMOS.
+- `delay_model : "table_lookup"`: Specifies the delay model used.
+- `bus_naming_style : "%s[%d]"`: Sets the naming convention for buses.
+- `time_unit : "1ns"`: Defines the time unit.
+- `voltage_unit : "1V"`: Establishes the voltage unit.
+- `leakage_power_unit : "1nW"`: Sets the unit for leakage power.
+- `current_unit : "1mA"`: Defines the current unit.
+- `pulling_resistance_unit : "1kohm"`: Specifies the unit for pulling resistance.
+- `capacitive_load_unit(1.0000000000, "pf")`: Sets the unit for capacitive load.
+
+Additionally, the .lib file details the characteristics of various cells, including leakage power, power consumption, area, input capacitance, and delay for different input combinations.
+
+# Considering a two input AND gate:
+
+![lab4-2](https://github.com/user-attachments/assets/8ebb2d36-646c-4136-981e-1f8a926244fc)
+
+# LAB-5:
+Hierarchical vs flat synthesis & Various Flop Coding Styles and optimization:
+
+# Hierarchical Synthesis:
+```
+cd ~
+cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog multiple_modules.v
+```
+
+![lab5](https://github.com/user-attachments/assets/61c9a60b-1a73-4110-8e50-55526c76da2a)
+
+# To Synthesize the Design:
+```
+synth -top multiple_modules
+```
+When we execute the command `synth -top multiple_modules` in Yosys, hierarchical synthesis is carried out. This approach preserves the relationships between the modules, maintaining the module hierarchy throughout the synthesis process.
+
+![lab5-2](https://github.com/user-attachments/assets/5c515d0c-abed-4787-a9fc-33abf46a59f1)
+
+# Multiple Modules: - 2 SubModules
+Commands to generate the netlist & Create a Graphical Representation of Logic for Multiple Modules:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show multiple_modules
+```
+
+![lab5-3](https://github.com/user-attachments/assets/9d463817-a8c3-4279-bac4-793fd4e6bd92)
+
+Commands to write the netlist and view it:
+```
+write_verilog -noattr multiple_modules_hier.v
+!vim multiple_modules_hier.v
+```
+![lab5-4](https://github.com/user-attachments/assets/bdcd23b5-ec78-4bc7-8cb8-55ac6bfc73c3)
+
+# Flattening: To merge all hierarchical modules in the design into a single module and generate a flat netlist, simply type the following command:
+
+```
+flatten
+
+```
+# Commands to write the netlist and view it:
+
+```
+write_verilog -noattr multiple_modules_hier.v
+!vim multiple_modules_hier.v
+
+```
+![lab5-5](https://github.com/user-attachments/assets/57468c8f-fc51-4803-a74b-f40934f09255)
+
+![lab5-6](https://github.com/user-attachments/assets/2ad0786d-4e65-4fdb-9bd1-01351476def2)
+
+
+
+
+
+
+
+
+
 
 
 
