@@ -2038,3 +2038,52 @@ To create a graphical representation of the synthesized design:
 ![image](https://github.com/user-attachments/assets/11b87165-4369-4e11-a95c-2936b81482f6)
 
 Observation: This module illustrates that on reset, ( Q ) is set to 1 while ( q1 ) is reset to 0. On each clock cycle, ( q1 ) is updated to 1, and ( Q ) reflects the value of ( q1 ).
+##  D-Flipflop Constant 4 with Synchronous Reset (active high):
+In this section, we explore a D Flip-Flop with a synchronous reset that is active high. The Verilog code implementation is as follows:
+```
+ module dff_const4(input clk, input reset, output reg q);
+ reg q1;
+
+ always @(posedge clk or posedge reset) begin
+     if (reset) begin
+         q <= 1'b1;  // Output set to 1 when reset is active
+         q1 <= 1'b1; // Intermediate register q1 also set to 1
+     end else begin	
+         q1 <= 1'b1; // Intermediate register q1 set to 1
+         q <= q1;    // Output q updates to the value of q1
+     end
+ end
+ endmodule
+```
+
+Synthesis:
+
+To synthesize this design, navigate to the required directory:
+```
+sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+Launch Yosys and run the following commands:
+```
+ yosys
+ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+ read_verilog dff_const4.v
+ synth -top dff_const4
+```
+
+![image](https://github.com/user-attachments/assets/5ebdc607-710a-4b6e-b184-682b52ca1f0d)
+
+Generate the netlist:
+```
+ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Finally, create a graphical representation:
+```
+ show
+```
+![image](https://github.com/user-attachments/assets/600c739a-5185-41ea-a383-fd739574b5bc)
+
+
+Observation: This module specifies that both ( q ) and ( q1 ) are set to 1 upon a positive edge of reset. Consequently, ( Q ) maintains a value of 1, regardless of clock or reset states.
+
