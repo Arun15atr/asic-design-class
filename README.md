@@ -904,22 +904,126 @@ the following screen shots displays the commands and outputs of the assignment
 
 </details>
 
+<details>
+<summary>Lab 8</summary>
+<br>
+  
+### **RTL Design using Verilog with SKY130 Technology** 🚀✨
+
+<details>
+<summary>Day-1</summary>
+<br>
+  
+## Simulation flow based on iverilog
+
+![image](https://github.com/user-attachments/assets/a7df98e7-2e2b-4867-a1f3-380c209385cc)
+
+## LAB-1:
+# Aim: Making the setup in local system and cloning the required files from github repository:
+
+# Commands to excute:
+```
+sudo -i
+sudo apt-get install git
+ls
+cd /home
+mkdir VLSI
+cd VLSI
+git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+cd sky130RTLDesignAndSynthesisWorkshop/verilog_files
+ls
+```
+
+# Terminal Screenshots:
+
+![day1-1](https://github.com/user-attachments/assets/f2de2b44-fe9b-4b2f-a6b1-acf11af41afc)
+
+![day1-2](https://github.com/user-attachments/assets/60efbd1a-a688-40cb-a671-8c24bf1341ae)
+
+![day1-3](https://github.com/user-attachments/assets/50f5ed6e-318d-4ded-83cf-9031650c4d58)
 
 
+## LAB-2:
+# Aim : Working wiht iverilog gtkwave:
+We are going to implement 2:1 multiplexer.
+
+## Commands :
+```
+gvim tb_good_mux.v -o good_mux.v
+```
+![lab2](https://github.com/user-attachments/assets/215af7fd-3e05-4552-9aaa-3504647ee256)
+
+## Steps to implement the waveform on gtkwave:
+
+```
+iverilog good_mux.v tb_good_mux.v
+ls
+./a.out
+gtkwave tb_good_mux.vcd
+
+```
+##  Termianl and gtkwaveform screenshots:
+
+```
+iverilog good_mux.v tb_good_mux.v
+ls
+./a.out
+gtkwave tb_good_mux.vcd
+```
+
+![image](https://github.com/user-attachments/assets/175d3826-1fb2-4549-a13b-d314943ae966)
+
+![lab](https://github.com/user-attachments/assets/1b72ec15-95a5-41a1-948b-600954b0fa45)
 
 
+## LAB-3:
+# Aim : Synthesizing of  2:1 multiplexer using Yosys and Logic Synthesis :
+
+## Yosys :
+Yosys is an open-source synthesis tool for digital circuits that supports various hardware description languages, including Verilog. It enables users to transform RTL designs into netlists, making it ideal for FPGA and ASIC design flows. With its extensible architecture, Yosys integrates well with other EDA tools, allowing for a flexible design process.
+
+# YOSYS SETUP:
+![image](https://github.com/user-attachments/assets/3e29db19-2920-4a69-b6db-521b5fe516a6)
+
+# Synthesis Verification :
+![image](https://github.com/user-attachments/assets/a7bfd470-a955-4858-a383-c0ffda291705)
+
+# Logic synthesis:
+Logic synthesis is the process of transforming high-level design descriptions (like RTL) into a gate-level representation. 🏗️ It optimizes the design for performance, area, and power consumption, ensuring it meets specified requirements. ⚡🔍 By automating this process, designers can quickly iterate and refine their circuits for better efficiency! ✨
+
+## Commands :
+#  To Start the yosys :
+```
+yosys
+```
+![yosys](https://github.com/user-attachments/assets/4222fb74-fea1-41fb-a8e9-90acdb0387e5)
 
 
+# Load the sky130 standard library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+![read](https://github.com/user-attachments/assets/df605b0c-0e8d-4087-bab2-9c21aa77d111)
 
 
+# Read the design files :
+```
+read_verilog good_mux.v
 
+```
+# Synthesize the top level module :
+```
+synth -top good_mux
+```
+![synth](https://github.com/user-attachments/assets/7e90f84b-0bc7-4658-89ae-f9ab40c9ab49)
 
+# Mappping to standard library:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
 
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/2abf99b6-57c0-496e-95d7-6788544b7e9a)
 
 
 
