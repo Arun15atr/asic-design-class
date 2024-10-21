@@ -1047,7 +1047,24 @@ write_verilog -noattr good_mux_netlist.v
 
  </details>
 
-</details>
+<details>
+<summary>Day-2</summary>
+<br>
+
+## Timing libs, hierarchical vs flat synthesis and efficient flop coding stylesLAB-4:
+
+#LAB-4:
+```
+sudo -i
+cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/lib
+gvim sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+![lab4-1](https://github.com/user-attachments/assets/a1d4358f-0ff2-4a38-b62a-4499db58073d)
+
+
+
+
+
 
 
 
