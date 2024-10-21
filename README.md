@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a3f10051-e53f-44b4-8f6f-1112a8b8cd47)# ASIC DESIGN LAB REPOS 
+# ASIC DESIGN LAB REPOS 
 
 <tr></tr>
 
@@ -1788,5 +1788,101 @@ show
 ```
 ![image](https://github.com/user-attachments/assets/6acfca87-700e-4543-9e8c-7a0d23c0f95a)
 
+## Lab 2: Optimization of Various Sequential Designs
+
+D-Flipflop Constant 1 with Asynchronous Reset (active low)
+
+This section covers the implementation of a D Flip-Flop featuring an active low asynchronous reset. Below is the corresponding Verilog code:
+```
+ module dff_const1(input clk, input reset, output reg q);
+ always @(posedge clk or posedge reset) begin
+     if (reset)
+         q <= 1'b0;  // Output is set to 0 when reset is active
+     else
+         q <= 1'b1;  // Output is set to 1 on the rising edge of the clock
+ end
+ endmodule
+ ```
+
+The testbench designed to simulate the behavior of this D Flip-Flop is as follows:
+
+```verilog
+ module tb_dff_const1;
+   reg clk, reset;
+   wire q;
+
+   dff_const1 uut (.clk(clk), .reset(reset), .q(q));
+
+   initial begin
+       $dumpfile("tb_dff_const1.vcd");
+       $dumpvars(0, tb_dff_const1);
+       // Initialize Inputs
+       clk = 0;
+       reset = 1;
+       #3000 $finish; // End simulation after 3000 time units
+   end
+
+   always #10 clk = ~clk; // Generate clock signal with a period of 20 time units
+   always #1547 reset = ~reset; // Toggle reset signal periodically
+ endmodule
+```
+Command Steps:
+
+To execute the design and observe the waveform, navigate to the required directory and execute the following commands:
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+
+```
+Use the following commands to compile and simulate the design:
+```
+ iverilog dff_const1.v tb_dff_const1.v
+ ls
+```
+The iverilog command compiles the design and outputs an executable named a.out. To run this executable and observe the waveform, use:
+```
+ ./a.out
+ gtkwave tb_dff_const1.vcd
+```
+
+![image](https://github.com/user-attachments/assets/6e3bcdd5-16f2-40b8-bd32-96f7d2ebe4bc)
+
+
+Observation: The waveform indicates that the output ( Q ) is high whenever the reset signal is low, showing that the reset operation is independent of the clock edge.
+
+Synthesis:
+
+To synthesize the design, navigate to the required directory again:
+
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+
+Start Yosys and execute the following commands:
+```
+ yosys
+ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+ read_verilog dff_const1.v
+ synth -top dff_const1
+```
+![image](https://github.com/user-attachments/assets/731dffbb-d551-4f87-a38c-a2e260ee286b)
+
+
+Generate the netlist with:
+```
+ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+To create a graphical representation of the synthesized design, use:
+```
+ show
+```
+![image](https://github.com/user-attachments/assets/9ac415de-09ad-4c20-95a0-0aee5c63ea5b)
+
+
+Observation: Since the reset condition does not rely on the clock edge, the D Flip-Flop remains unchanged in the synthesized output.
 
 
