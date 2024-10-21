@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/cd63f03a-6135-451c-b13c-29020ca0ab92)# ASIC DESIGN LAB REPOS 
+# ASIC DESIGN LAB REPOS 
 
 <tr></tr>
 
