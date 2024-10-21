@@ -1576,3 +1576,38 @@ show
 
 ## 3. 3-input AND Gate
 
+# Verilog Code:
+```
+module opt_check3(input a, input b, input c, output y);
+	assign y = a?(b?c:0):0;
+endmodule
+```
+command Steps for Synthesis:
+
+Follow the same steps as for the 2-input AND gate with the following changes:
+
+1.Use opt_check3.v as the Verilog file:
+```
+read_verilog opt_check3.v
+```
+2.Synthesize the design with opt_check3
+```
+synth -top opt_check3
+```
+![image](https://github.com/user-attachments/assets/b42ecff3-202f-4442-9eb9-60a718af72fe)
+
+3.Generate the netlist:
+
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+4.Remove unused or redundant logic:
+```
+opt_clean -purge
+```
+5.Create a graphical representation:
+```
+show
+```
+![image](https://github.com/user-attachments/assets/54e37518-fbfc-42c0-8d83-4520ed6091e5)
+
