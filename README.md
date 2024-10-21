@@ -1473,7 +1473,106 @@ show
  </details>
  
 <details>
-	
 <summary>Day-3</summary>
 <br>
+
+## LAB-6:
+## Optimization of Various Combinational Designs using Yosys:
+This section demonstrates the synthesis and optimization of various combinational designs using Yosys.
+
+## Combinational Designs:
+
+    2-input AND gate
+    2-input OR gate
+    3-input AND gate
+    2-input XNOR gate (3-input Boolean Logic)
+    Multiple Module Optimization-1
+    Multiple Module Optimization-2
+    
+## 1. 2-input AND Gate
+# Verilog Code:
+```
+module opt_check(input a, input b, output y);
+	assign y = a?b:0;
+endmodule
+```
+# Command Steps for Synthesis:
+
+1. Navigate to the required directory:
+
+   ```
+   cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+   ```
+2.Launch Yosys:
+```
+yosys
+```
+3.Read the standard cell library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+4.Read the Verilog design files:
+```
+read_verilog opt_check.v
+```
+5. Synthesize the design:
+```
+synth -top opt_check
+```
+![image](https://github.com/user-attachments/assets/ee9291e0-15dd-4d74-a3f4-c921464577a5)
+
+6.Generate the netlist:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+7.Remove unused or redundant logic:
+```
+opt_clean -purge
+```
+8. Create a graphical representation:
+
+```
+show
+```
+![image](https://github.com/user-attachments/assets/16e111ef-6a9d-4e04-a3ad-3138ae766d9d)
+
+## 2. 2-input OR Gate
+
+# Verilog Code:
+```
+module opt_check2(input a, input b, output y);
+	assign y = a?1:b;
+endmodule
+```
+
+Command Steps for Synthesis:
+
+Repeat the same steps as for the 2-input AND gate with the following changes:
+
+1.Use opt_check2.v as the Verilog file:
+```
+read_verilog opt_check2.v
+```
+2.Synthesize the design with opt_check2:
+```
+synth -top opt_check2
+```
+![image](https://github.com/user-attachments/assets/745ceb2f-34ec-4f25-b98f-4200c776d490)
+
+3.Generate the netlist:
+
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+4.Remove unused or redundant logic:
+```
+opt_clean -purge
+```
+5.Create a graphical representation:
+```
+show
+```
+![image](https://github.com/user-attachments/assets/cbeec15a-15a5-4649-a251-d5e57c9dc435)
+
+## 3. 3-input AND Gate
 
