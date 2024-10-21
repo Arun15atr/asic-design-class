@@ -1208,6 +1208,7 @@ The compiled output will be saved as a.out.
 gtkwave tb_dff_asyncres.vcd
 ```
 
+![image](https://github.com/user-attachments/assets/9628e5bc-50cc-4990-b33d-cd36b541d461)
 
 
 
