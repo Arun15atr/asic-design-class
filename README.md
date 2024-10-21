@@ -1,4 +1,4 @@
-# ASIC DESIGN LAB REPOS 
+![image](https://github.com/user-attachments/assets/a3f10051-e53f-44b4-8f6f-1112a8b8cd47)# ASIC DESIGN LAB REPOS 
 
 <tr></tr>
 
@@ -1726,4 +1726,67 @@ flatten
 show
 ```
 ![image](https://github.com/user-attachments/assets/4d2e3a6f-3bee-47dd-a138-884f5b521416)
+
+## Multiple Module Optimization - 2
+# Verilog Code:
+This is another example of multi-module optimization with a different configuration.
+```
+module sub_module(input a, input b, output y);
+assign y = a & b;
+endmodule
+
+module multiple_module_opt2(input a, input b, input c, input d, output y);
+wire n1, n2, n3;
+sub_module U1 (.a(a), .b(1'b0), .y(n1));
+sub_module U2 (.a(b), .b(c), .y(n2));
+sub_module U3 (.a(n2), .b(d), .y(n3));
+sub_module U4 (.a(n3), .b(n1), .y(y));
+endmodule
+
+```
+1.Navigate to the Directory:
+ ```
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+2.Start the Yosys Tool:
+```
+yosys
+```
+3.Read the Library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+4.Read the Verilog File:
+```
+read_verilog multiple_module_opt2.v
+
+
+```
+5. Synthesize the Design:
+```
+synth -top multiple_module_opt2
+
+```
+![image](https://github.com/user-attachments/assets/0f1b1a30-13bc-47cc-8192-96a8312bfbd7)
+
+
+6.Generate the Netlist:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+7.Optimize the Design:
+```
+opt_clean -purge
+```
+8.Flattening merges hierarchies:
+```
+flatten
+```
+9.Visualize the Schematic:
+```
+show
+```
+![image](https://github.com/user-attachments/assets/6acfca87-700e-4543-9e8c-7a0d23c0f95a)
+
+
 
