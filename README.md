@@ -1611,3 +1611,23 @@ show
 ```
 ![image](https://github.com/user-attachments/assets/54e37518-fbfc-42c0-8d83-4520ed6091e5)
 
+## 4. 2-input XNOR Gate (3-input Boolean Logic)
+
+# Verilog Code:
+```
+module opt_check4(input a, input b, input c, output y);
+	assign y = a ? (b ? ~c : c) : ~c;
+endmodule
+```
+## **Command Steps for Synthesis:**
+
+Follow the same steps as for the 2-input AND gate, but with the following modifications:
+
+- Use `opt_check4.v` as the Verilog file: `read_verilog opt_check4.v`
+- Synthesize the design using `opt_check4`.
+
+```
+synth -top opt_check4
+```
+
+
