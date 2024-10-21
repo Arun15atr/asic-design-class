@@ -1134,14 +1134,79 @@ write_verilog -noattr multiple_modules_hier.v
 
 ![lab5-6](https://github.com/user-attachments/assets/2ad0786d-4e65-4fdb-9bd1-01351476def2)
 
+## Graphical Representation of Logic for Multiple Modules:
+
+```
+show
+```
+
+![lab5-7](https://github.com/user-attachments/assets/79d91603-e0cc-4c34-abb1-7e7882cef79b)
 
 
+## D Flip-Flop Design and Simulation Using Icarus Verilog, GTKWave, and Yosys:
 
+This project showcases different coding styles for D Flip-Flops and includes simulations using Icarus Verilog and GTKWave. It also addresses the synthesis of these designs with Yosys. The simulations concentrate on three types of D Flip-Flops:
 
+- D Flip-Flop with Asynchronous Reset
+- D Flip-Flop with Asynchronous Set
+- D Flip-Flop with Synchronous Reset
 
+  # 1.D Flip-Flop with Asynchronous Reset:
+  
+  Verilog code for the D Flip-Flop with an asynchronous reset:
+  
+  ```
+  module dff_asyncres(input clk, input async_reset, input d, output reg q);
+	always@(posedge clk, posedge async_reset)
+	begin
+		if(async_reset)
+			q <= 1'b0;
+		else
+			q <= d;
+	end
+  endmodule
 
+Testbench for Asynchronous Reset D Flip-Flop:
+```
+module tb_dff_asyncres; 
+	reg clk, async_reset, d;
+	wire q;
+	dff_asyncres uut (.clk(clk), .async_reset(async_reset), .d(d), .q(q));
 
+	initial begin
+		$dumpfile("tb_dff_asyncres.vcd");
+		$dumpvars(0, tb_dff_asyncres);
+		clk = 0;
+		async_reset = 1;
+		d = 0;
+		#3000 $finish;
+	end
+	
+	always #10 clk = ~clk;
+	always #23 d = ~d;
+	always #547 async_reset = ~async_reset; 
+ endmodule
+```
+Steps to Run the Simulation:
 
+1. Navigate to the directory where the Verilog files are located:
+```
+cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+2.Run the following commands to compile and simulate the design:
+
+```
+iverilog dff_asyncres.v tb_dff_asyncres.v
+ls
+```
+
+The compiled output will be saved as a.out.
+
+3.Execute the compiled output and open the waveform viewer:
+```
+./a.out
+gtkwave tb_dff_asyncres.vcd
+```
 
 
 
