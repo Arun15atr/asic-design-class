@@ -1470,6 +1470,10 @@ show
 ```
 ![image](https://github.com/user-attachments/assets/aa150b2b-b98e-4856-9711-abba658f89c9)
 
-
-
+ </details>
+ 
+<details>
+	
+<summary>Day-3</summary>
+<br>
 
