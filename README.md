@@ -2328,6 +2328,9 @@ iverilog bad_mux.v tb_bad_mux.v
 ./a.out
 gtkwave tb_bad_mux.vcd
 ```
+
+![image](https://github.com/user-attachments/assets/299fb9e9-5bb1-44c5-8fe3-0c090bd92d5d)
+
 From the waveform, it can be observed that the output y changes only when there is a change in the select line, completely ignoring the change in i0 and i1, which should also change the output y. Thus, this design is that of a bad MUX.
 Synthesis:
 This will invoke/start Yosys.
@@ -2346,6 +2349,9 @@ Synthesize the Design:
 ```
 synth -top bad_mux
 ```
+
+![image](https://github.com/user-attachments/assets/cc04bf18-144a-430b-885b-f17cf91241d2)
+
 Generate the Netlist:
 ```
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -2354,9 +2360,14 @@ Create a Graphical Representation:
 ```
 show
 ```
+
+![image](https://github.com/user-attachments/assets/ca023a8d-f5cc-4521-a89a-73d5e60df468)
+
 To See the Netlist:
 ```
 write_verilog -noattr bad_mux_net.v
 !gvim bad_mux_net.v
 ```
+
+
 From the waveform, it can be observed that the output y changes only when there is a change in the select line, completely ignoring the change in i0 and i1, which should also change the output y. Thus, this design is that of a bad MUX.
