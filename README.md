@@ -2302,9 +2302,61 @@ gtkwave tb_ternary_operator_mux.vcd
 ```
 Below is the Snapshot of the above commands and the resultant Waveforms: 
 
+![image](https://github.com/user-attachments/assets/e302e36d-ed15-4e37-ba19-ac32fe66a246)
+
 
 
 These waveforms correspond to the GATE LEVEL SYNTHESIS for the Ternary Operator MUX.
 
+## Example 2: Design of a 2:1 Bad MUX
 
-
+Verilog Code:
+```
+module bad_mux(input i0, input i1, input sel, output reg y);
+	always@(sel)
+	begin
+		if(sel)
+			y <= i1;
+		else
+			y <= i0;
+	end
+endmodule
+```
+Command Steps for Simulation:
+```
+iverilog bad_mux.v tb_bad_mux.v
+./a.out
+gtkwave tb_bad_mux.vcd
+```
+From the waveform, it can be observed that the output y changes only when there is a change in the select line, completely ignoring the change in i0 and i1, which should also change the output y. Thus, this design is that of a bad MUX.
+Synthesis:
+This will invoke/start Yosys.
+```
+yosys
+```
+Read the Library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the Design Verilog Files:
+```
+read_verilog bad_mux.v
+```
+Synthesize the Design:
+```
+synth -top bad_mux
+```
+Generate the Netlist:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Create a Graphical Representation:
+```
+show
+```
+To See the Netlist:
+```
+write_verilog -noattr bad_mux_net.v
+!gvim bad_mux_net.v
+```
+From the waveform, it can be observed that the output y changes only when there is a change in the select line, completely ignoring the change in i0 and i1, which should also change the output y. Thus, this design is that of a bad MUX.
