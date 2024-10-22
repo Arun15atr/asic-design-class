@@ -2213,3 +2213,95 @@ Finally, create a graphical representation:
 ```
 ![image](https://github.com/user-attachments/assets/6be0272f-8459-4f13-8368-f5e89b53e935)
 
+</details>
+ 
+<details>
+<summary>Day-4</summary>
+<br>
+
+## AIM: Gate Level Simulation (GLS), Synthesis-Simulation Mismatch, Non-blocking and Blocking Statements
+Gate Level Simulation (GLS) is a crucial step in the digital design verification process. It acts as an important checkpoint where designers verify the accuracy and functionality of the synthesized netlist, which offers a more detailed view of the design compared to the original high-level abstraction. During GLS, simulations are conducted using a testbench to evaluate both the logical correctness and timing performance of the circuit. By analyzing output waveforms and comparing them to expected results, designers can confirm that the synthesis process hasn’t unintentionally introduced errors that could compromise the overall functionality of the design. This stage is particularly important as it provides insights into how well the design meets the required specifications and performance criteria before progressing to physical implementation.
+
+A critical aspect of GLS is the consideration of sensitivity lists in the design. These lists are vital for ensuring the circuit behaves correctly under all conditions. An incomplete sensitivity list can lead to unintended latches, resulting in mismatches between synthesis and simulation. Additionally, understanding the distinction between blocking and non-blocking assignments is essential in this context. Blocking assignments, which execute in sequence, can create situations where the output fails to respond to input changes as expected, potentially leading to errors in simulated behavior. In contrast, non-blocking assignments enable concurrent execution, helping to avoid such issues. Therefore, a thorough analysis of the circuit's behavior, alongside a solid understanding of sensitivity lists and assignment types, is necessary to achieve accurate results in GLS.
+## GLS Simulation
+# Example 1: 2 x 1 Multiplexer Using Ternary Operator
+
+# Verilog Code:
+```
+module ternary_operator_mux (input i0, input i1, input sel, output y);
+    assign y = sel ? i1 : i0;
+endmodule
+```
+# Command Steps for Simulation:
+```
+iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+./a.out
+gtkwave tb_ternary_operator_mux.vcd
+```
+![image](https://github.com/user-attachments/assets/ef35a196-11d5-4cd4-b02d-899b539364dd)
+
+Synthesis:
+
+This will invoke/start Yosys.
+```
+yosys
+```
+Read the Library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Read the Design Verilog Files:
+```
+read_verilog ternary_operator_mux.v
+```
+Synthesize the Design:
+```
+synth -top ternary_operator_mux
+```
+![image](https://github.com/user-attachments/assets/3e00c28b-e728-48d7-b950-6396405df9c3)
+
+Generate the Netlist:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Create a Graphical Representation:
+```
+show
+```
+To See the Netlist:
+```
+write_verilog -noattr ternary_operator_mux_net.v
+!gvim ternary_operator_mux_net.v
+```
+![image](https://github.com/user-attachments/assets/a9755a97-a08a-41ab-841e-1e138cd9d4a7)
+
+# Gate Level Synthesis (GLS):
+
+# Command Steps:
+Go to the required directory:
+
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+We just need to put a few commands as stated below in order to see the waveforms.
+```
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
+ls
+```
+After giving the above command the IVerilog stores the output as ' a.out '
+
+Now let's execute the ' a.out ' file and observe the waveforms.
+```
+./a.out
+gtkwave tb_ternary_operator_mux.vcd
+```
+Below is the Snapshot of the above commands and the resultant Waveforms: 
+
+
+
+These waveforms correspond to the GATE LEVEL SYNTHESIS for the Ternary Operator MUX.
+
+
+
