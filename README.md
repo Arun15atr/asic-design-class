@@ -2395,3 +2395,6 @@ Now let's execute the ' a.out ' file and observe the waveforms.
 ./a.out
 gtkwave tb_blocking_caveat.vcd
 ```
+![image](https://github.com/user-attachments/assets/1ed4ad37-9c8e-4e0b-bb88-c3c9e7413fff)
+
+
