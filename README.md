@@ -2087,3 +2087,129 @@ Finally, create a graphical representation:
 
 Observation: This module specifies that both ( q ) and ( q1 ) are set to 1 upon a positive edge of reset. Consequently, ( Q ) maintains a value of 1, regardless of clock or reset states.
 
+## 5.D-Flipflop Constant 5 with Synchronous Reset:
+This section presents a D Flip-Flop with a synchronous reset. The Verilog code is as follows:
+```
+ module dff_const5(input clk, input reset, output reg q);
+ reg q1;
+
+ always @(posedge clk or posedge reset) begin
+     if (reset) begin
+         q <= 1'b0;  // Output is set to 0 when reset is active
+         q1 <= 1'b0; // Intermediate register q1 also reset to 0
+     end else begin	
+         q1 <= 1'b1; // Intermediate register q1 set to 1
+         q <= q1;    // Output q is updated to q1's value
+     end
+ end
+ endmodule
+```
+# Synthesis:
+To synthesize this design, navigate to the required directory:
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+Launch Yosys and execute:
+```
+ yosys
+ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+ read_verilog dff_const5.v
+ synth -top dff_const5
+```
+![image](https://github.com/user-attachments/assets/ec8643ef-2545-482a-af36-571259666f12)
+
+
+Generate the netlist with:
+```
+ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Create a graphical representation:
+```
+ show
+```
+![image](https://github.com/user-attachments/assets/aa0bd4dd-91dd-47fa-9924-dac9db49c064)
+
+Observation: This module defines a D Flip-Flop that resets both ( q ) and ( q1 ) to 0 on a positive edge of reset. On each clock cycle, ( q1 ) is set to 1, and ( q ) is updated accordingly. Therefore, after the first clock cycle following reset, ( Q ) remains 1.
+# Counter Optimization 1:
+This section covers the implementation of a simple counter optimized for operation. The Verilog code is:
+```
+ module counter_opt(input clk, input reset, output q);
+ reg [2:0] count; // 3-bit counter
+ assign q = count[0]; // Output assigned to the least significant bit of count
+ 
+ always @(posedge clk or posedge reset) begin
+     if (reset)
+         count <= 3'b000; // Reset counter to 0
+     else
+         count <= count + 1; // Increment counter on clock edge
+ end
+ endmodule
+```
+Synthesis:
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+Launch Yosys and run:
+```
+ yosys
+ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+ read_verilog counter_opt.v
+ synth -top counter_opt
+```
+![image](https://github.com/user-attachments/assets/b3cbd38e-4975-4fe0-9ce3-3a4492109535)
+
+Generate the netlist with:
+```
+ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Create a graphical representation:
+```
+ show
+```
+![image](https://github.com/user-attachments/assets/9a95bfe4-c243-4866-8165-2dccc416218d)
+
+## 7. Counter Optimization 2:
+This section presents an optimized counter design. The Verilog code is as follows:
+```
+ module counter_opt2(input clk, input reset, output q);
+ reg [2:0] count; // 3-bit counter
+ assign q = (count[2:0] == 3'b100); // Output set high when count reaches 4
+ 
+ always @(posedge clk or posedge reset) begin
+     if (reset)
+         count <= 3'b000; // Reset counter to 0
+     else
+         count <= count + 1; // Increment counter on clock edge
+ end
+ endmodule
+```
+Synthesis:
+To synthesize this design, navigate to the required directory:
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+Launch Yosys and execute:
+```
+ yosys
+ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+ read_verilog counter_opt2.v
+ synth -top counter_opt
+```
+![image](https://github.com/user-attachments/assets/658a6a59-c996-41b9-a7c6-7eba5a6d78b6)
+
+Generate the netlist with:
+```
+ dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+Finally, create a graphical representation:
+```
+ show
+```
+![image](https://github.com/user-attachments/assets/6be0272f-8459-4f13-8368-f5e89b53e935)
+
