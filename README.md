@@ -2369,5 +2369,29 @@ write_verilog -noattr bad_mux_net.v
 !gvim bad_mux_net.v
 ```
 
+![image](https://github.com/user-attachments/assets/01151d40-092c-4771-961a-0952b045e3de)
+
 
 From the waveform, it can be observed that the output y changes only when there is a change in the select line, completely ignoring the change in i0 and i1, which should also change the output y. Thus, this design is that of a bad MUX.
+
+## Gate Level Synthesis (GLS)
+Command Steps:
+
+Go to the required directory:
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+We just need to put a few commands as stated below in order to see the waveforms.
+```
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
+ls
+```
+After giving the above command, the IVerilog stores the output as ' a.out '
+
+Now let's execute the ' a.out ' file and observe the waveforms.
+```
+./a.out
+gtkwave tb_blocking_caveat.vcd
+```
