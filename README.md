@@ -2451,6 +2451,83 @@ Go to the required directory:
 ```
 We just need to put a few commands as stated below in order to see the waveforms.
 ```
+iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v bad_mux.v tb_bad_mux.v
+ls
+
+```
+After giving the above command, the IVerilog stores the output as ' a.out '
+
+Now let's execute the ' a.out ' file and observe the waveforms.
+```
+./a.out
+gtkwave tb_bad_mux.vcd
+```
+![image](https://github.com/user-attachments/assets/1ed4ad37-9c8e-4e0b-bb88-c3c9e7413fff)
+
+# Example 3: Blocking Caveat
+Verilog Code:
+```
+module blocking_caveat(input a, input b, input c, output reg d);
+	reg x;
+
+	always@(*)
+	begin
+		d = x & c;
+		x = a | b;
+	end
+endmodule
+```
+Command Steps for Simulation:
+```
+iverilog blocking_caveat.v tb_blocking_caveat.v
+./a.out
+gtkwave tb_blocking_caveat.vcd
+```
+![image](https://github.com/user-attachments/assets/663da905-f600-498e-b3ba-d57e7779aeb7)
+
+As depicted, when A and B go zero, the OR gate output should be zero (X equal to zero), and the AND gate output should also be zero (same as D output). But, the AND gate input of X takes the previous value of A|B equal to one, based on the design created by the blocking statement, hence the discrepancy in the output.
+
+# Synthesis:
+This will invoke/start Yosys.
+```
+yosys
+```
+Read the Library:
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+synth -top blocking_caveat
+```
+synth -top blocking_caveat
+```
+![image](https://github.com/user-attachments/assets/4bbf363c-370c-4ee5-a79a-ee86c8b89f3a)
+
+Generate the Netlist:
+```
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+```
+Create a Graphical Representation:
+```
+show
+```
+To See the Netlist:
+```
+write_verilog -noattr blocking_caveat_net.v
+!gvim blocking_caveat_net.v
+```
+![image](https://github.com/user-attachments/assets/5fd53d37-f911-4fc3-9228-46007ed9fcae)
+
+Gate Level Synthesis (GLS)
+Command Steps:
+Go to the required directory:
+```
+ sudo -i
+ cd ~
+ cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+We just need to put a few commands as stated below in order to see the waveforms.
+```
 iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
 ls
 ```
@@ -2461,6 +2538,7 @@ Now let's execute the ' a.out ' file and observe the waveforms.
 ./a.out
 gtkwave tb_blocking_caveat.vcd
 ```
-![image](https://github.com/user-attachments/assets/1ed4ad37-9c8e-4e0b-bb88-c3c9e7413fff)
+Below is the Snapshot of the above commands and the resultant Waveforms: 
+![image](https://github.com/user-attachments/assets/f7aef441-cc97-4d1b-99c0-42cbd2dad54a)
 
-
+These waveforms correspond to the GATE LEVEL SYNTHESIS for the Blocking Caveat.
