@@ -2268,12 +2268,15 @@ Create a Graphical Representation:
 ```
 show
 ```
+![image](https://github.com/user-attachments/assets/a9755a97-a08a-41ab-841e-1e138cd9d4a7)
+
 To See the Netlist:
 ```
 write_verilog -noattr ternary_operator_mux_net.v
 !gvim ternary_operator_mux_net.v
 ```
-![image](https://github.com/user-attachments/assets/a9755a97-a08a-41ab-841e-1e138cd9d4a7)
+![image](https://github.com/user-attachments/assets/b8c87abc-1325-4468-aad3-78c0bed84167)
+
 
 # Gate Level Synthesis (GLS):
 
