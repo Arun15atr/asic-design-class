@@ -2542,3 +2542,91 @@ Below is the Snapshot of the above commands and the resultant Waveforms:
 ![image](https://github.com/user-attachments/assets/f7aef441-cc97-4d1b-99c0-42cbd2dad54a)
 
 These waveforms correspond to the GATE LEVEL SYNTHESIS for the Blocking Caveat.
+</details>
+
+</details>
+<details>
+<summary>Lab 9</summary>
+<br>
+	
+### TASK 11: Synthesize RISC-V and Compare Output with Functional Simulations
+# Objective: The objective of this task is to synthesize the RISC-V design and then compare the results with functional simulations.
+Steps:
+1.Copy the source folder:
+Start by copying the `src` folder from the `VSDBabySoC` directory into the `vlsi` folder. After that, transfer it into the `sky130RTLDesignAndSynthesisWorkshop` directory using the following commands:
+```
+   sudo -i  
+   cd /home/arun/vlsi/  
+   cp -r src sky130RTLDesignAndSynthesisWorkshop/
+```
+2.Navigate to the required directory:
+Move to the target directory where synthesis will take place:
+```
+   cd ~  
+   cd /home/arun/vlsi/sky130RTLDesignAndSynthesisWorkshop/src/module
+```
+3.Synthesis:
+Start Yosys for synthesis:
+Invoke Yosys by entering the following command:
+```
+  yosys
+```
+4.Read the library:
+Load the standard cell library required for synthesis:
+```
+   read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+5.Read the Verilog design files:
+Import the required Verilog files for clock gating and RISC-V designs:
+```
+   read_verilog clk_gate.v  
+   read_verilog rvmyth.v
+```
+6.Synthesize the design:
+Synthesize the top-level module rvmyth:
+```
+   synth -top rvmyth
+```
+![lab91](https://github.com/user-attachments/assets/f3685cdb-582f-497a-ad27-139cf424b9c4)
+
+![lab922](https://github.com/user-attachments/assets/89331441-ef1f-44dc-ae55-d34e0afd898a)
+
+![netlist](https://github.com/user-attachments/assets/9a34d2af-cba9-4869-b29c-5162b2ff4d78)
+
+
+7. Generate the netlist:
+After synthesis, generate the netlist and inspect it:
+```
+   abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+   write_verilog -noattr rvmyth.v  
+   !gvim rvmyth.v  
+   exit
+```
+![lab93](https://github.com/user-attachments/assets/d2c6d388-7318-4a68-9338-0cfaec6a0d4c)
+
+8.Simulate the Synthesized Design:
+Observe the synthesized RISC-V output waveform:
+Use the following commands to run the simulation and view the waveforms:
+```
+   iverilog ../../my_lib/verilog_model/primitives.v ../../my_lib/verilog_model/sky130_fd_sc_hd.v rvmyth.v testbench.v vsdbabysoc.v avsddac.v avsdpll.v clk_gate.v  
+   ls  
+   ./a.out  
+   gtkwave dump.vcd
+```
+Functional Simulations:
+Simulate functional design:
+Navigate to the VSDBabySoC directory and simulate the pre-synthesized version of the design:
+```
+   cd ~  
+   cd VSDBabySoC  
+   iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/  
+   ./pre_synth_sim.out  
+   gtkwave pre_synth_sim.vcd
+```
+Comparison:
+Comparison of Functionality vs Synthesized Output:
+Finally, compare the waveforms of the functional and synthesized simulations to verify correctness.
+### o1	
+![lab95](https://github.com/user-attachments/assets/af9036f7-8f0f-4f01-b244-0d17dcb9d00f)
+## o2
+![lab94o2](https://github.com/user-attachments/assets/ea1dd1c6-dcc0-4029-b4bc-51ea2eb70221)
