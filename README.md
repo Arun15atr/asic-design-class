@@ -2630,3 +2630,5 @@ Finally, compare the waveforms of the functional and synthesized simulations to 
 ![lab95](https://github.com/user-attachments/assets/af9036f7-8f0f-4f01-b244-0d17dcb9d00f)
 ## o2
 ![lab94o2](https://github.com/user-attachments/assets/ea1dd1c6-dcc0-4029-b4bc-51ea2eb70221)
+
+we can see that O1 = O2 so functionality is equal to synthesized Output.
