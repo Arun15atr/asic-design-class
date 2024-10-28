@@ -2632,3 +2632,71 @@ Finally, compare the waveforms of the functional and synthesized simulations to 
 ![lab94o2](https://github.com/user-attachments/assets/ea1dd1c6-dcc0-4029-b4bc-51ea2eb70221)
 
 we can see that O1 = O2 so functionality is equal to synthesized Output.
+
+</details>
+
+
+<details>
+<summary>Lab 10</summary>
+<br>
+	
+## TASK : Static Timing Analysis for a Synthesized RISC-V Core with OpenSTA 
+# Commands to install tools
+Download CUDD from this **[link](https://github.com/davidkebo/cudd/blob/main/cudd_versions/cudd-3.0.0.tar.gz)** and then transfer the downloaded file to your home directory.
+```
+cd
+tar xvfz cudd-3.0.0.tar.gz
+cd cudd-3.0.0
+./configure
+make
+```
+openSTA
+```
+cd
+sudo apt-get install cmake clang gcc tcl swig bison flex
+
+git clone https://github.com/parallaxsw/OpenSTA.git
+cd OpenSTA
+cmake -DCUDD_DIR=/home/arun/cudd-3.0.0
+make
+app/sta
+```
+
+![screenshot1](https://github.com/user-attachments/assets/9a95c861-ef35-47db-9e19-3cc0d9e538af)
+
+```
+cd /home/arun/OpenSTA
+mkdir lab10
+```
+Download all the required files to directory lab10
+# Steps to do Timing Analysis
+
+    Clock period = 9.75ns
+    Setup uncertainty and clock transition will be 5% of clock
+    Hold uncertainty and data transition will be 8% of clock.
+
+```
+cd /home/arun/OpenSTA/app
+./sta
+
+read_liberty /home/arun/OpenSTA/lab10/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog /home/arun/OpenSTA/lab10/likith_riscv_netlist.v
+link_design rvmyth
+
+create_clock -name clk -period 9.75 [get_ports clk]
+set_clock_uncertainty [expr 0.05 * 9.75] -setup [get_clocks clk]
+set_clock_uncertainty [expr 0.08 * 9.75] -hold 
+[get_clocks clk]
+set_clock_transition [expr 0.05 * 9.75] [get_clocks clk]
+set_input_transition [expr 0.08 * 9.75] [all_inputs]
+
+report_checks -path_delay max
+report_checks -path_delay min
+```
+
+![image](https://github.com/user-attachments/assets/a616f45e-e472-4cdf-b281-5db3fd75f9b9)
+
+![image](https://github.com/user-attachments/assets/bbf2483f-573e-4ddf-be35-32a15bd97b98)
+
+
+</details>
