@@ -2680,7 +2680,7 @@ cd /home/arun/OpenSTA/app
 ./sta
 
 read_liberty /home/arun/OpenSTA/lab10/sky130_fd_sc_hd__tt_025C_1v80.lib
-read_verilog /home/arun/OpenSTA/lab10/likith_riscv_netlist.v
+read_verilog /home/arun/OpenSTA/lab10/arun_riscv_netlist.v
 link_design rvmyth
 
 create_clock -name clk -period 9.75 [get_ports clk]
