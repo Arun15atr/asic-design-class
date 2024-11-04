@@ -2834,5 +2834,25 @@ source /home/arun/OpenSTA/lab11/sta.tcl
 ![image](https://github.com/user-attachments/assets/2efd5ecc-3267-49ae-8ccf-20c3d60bb550)
 
 
+![image](https://github.com/user-attachments/assets/7e41395d-5ef9-4d2b-b673-1aaaaf39f776)
+
+
+# Total Negative Slack
+
+![image](https://github.com/user-attachments/assets/51922cf8-aa37-4687-a58d-f0ed4dd54020)
+
+# worst negative Slack:
+
+![image](https://github.com/user-attachments/assets/fabb36d6-aa48-4243-929b-21c82f825f20)
+
+# Worst MAX Slack:
+
+![image](https://github.com/user-attachments/assets/a86312cc-d4be-4c84-8475-a5332c469747)
+
+# WORST MIN SLACK:
+
+![image](https://github.com/user-attachments/assets/05c2c109-735c-48bc-8093-a5cd00bbdd84)
+
+
 
 
