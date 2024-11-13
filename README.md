@@ -3287,9 +3287,48 @@ Fall   Cell   Delay = Time taken for output to fall to 50 % − Time taken for i
 ![Screenshot from 2024-11-13 20-50-37](https://github.com/user-attachments/assets/4e7bae28-d89c-4c26-aad6-e2ccee7a26e2)
 
 
- Fall  Cell   Delay = 4.07 − 4.05 = 0.02   ns = 20 ps 
-6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+ Fall  Cell   Delay = 4.07 − 4.05 = 0.02   ns = 20 ps
+ 
+*** 6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.***
 
 Link to Sky130 Periphery rules: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html
 
 Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
+```
+# Change to home directory
+cd
+
+# Command to download the lab files
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+# Since lab file is compressed command to extract it
+tar xfz drc_tests.tgz
+
+# Change directory into the lab folder
+cd drc_tests
+
+# List all files and directories present in the current directory
+ls -al
+
+# Command to view .magicrc file
+gvim .magicrc
+
+# Command to open magic tool in better graphics
+magic -d XR &
+```
+Screenshots of commands run
+
+![day3p21](https://github.com/user-attachments/assets/11e05c54-70d8-47bc-a15d-7866d4fe7276)`
+
+![day3p22](https://github.com/user-attachments/assets/58ba4e87-6f47-4082-beb7-9e3106d6114e)
+
+Screenshot of .magicrc file
+
+![day3p23](https://github.com/user-attachments/assets/37174c18-9f34-47c2-b6e5-d81c5c20a0d6)
+
+Incorrectly implemented poly.9 simple rule correction
+
+Screenshot of poly rules
+
+![day3p24](https://github.com/user-attachments/assets/4e3ee44c-d169-4d27-81b1-dce3da1e6b72)
+
