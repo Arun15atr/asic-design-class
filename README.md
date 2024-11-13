@@ -3249,6 +3249,13 @@ Rise transition time calculation
 ![eightperc1](https://github.com/user-attachments/assets/7d958c31-6e1b-4713-8f4b-88f7c57b49f7)
 
 ![eightyper](https://github.com/user-attachments/assets/05e51052-d950-4b80-84b7-dd7ecf6a0dc5)
+
+ Rise   transition time = 2.24638 − 2.18242 = 0.06396 ns = 63.96 ps
+
+Fall transition time calculation
+fall transition time = time taken for output to fall to 20 % − time taken for output to fall to 80 %
+20 %   o f   output = 660   m V
+80 %   of output  = 2.64   V 
 20% fall
 
 ![twentyfall](https://github.com/user-attachments/assets/0f6d1921-48ab-42e6-8ec6-c74cf90a622b)
