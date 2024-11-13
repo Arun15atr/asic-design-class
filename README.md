@@ -3246,7 +3246,7 @@ Rise transition time calculation
 
 80% Screenshots
 
-![eightperc1](https://github.com/user-attachments/assets/7d958c31-6e1b-4713-8f4b-88f7c57b49f7)
+![Screenshot from 2024-11-14 02-25-52](https://github.com/user-attachments/assets/5398197a-e93a-4741-945c-2581f929ad31)
 
 ![eightyper](https://github.com/user-attachments/assets/05e51052-d950-4b80-84b7-dd7ecf6a0dc5)
 
@@ -3284,7 +3284,8 @@ Fall   Cell   Delay = Time taken for output to fall to 50 % − Time taken for i
 
 ![Screenshot from 2024-11-13 20-21-22](https://github.com/user-attachments/assets/9ff096ca-1674-4cab-bbf7-832c58173551)
 
-![Screenshot from 2024-11-13 20-20-45](https://github.com/user-attachments/assets/044bceba-0700-4f6a-867f-560cb50d167e)
+![Screenshot from 2024-11-13 20-50-37](https://github.com/user-attachments/assets/4e7bae28-d89c-4c26-aad6-e2ccee7a26e2)
+
 
  Fall  Cell   Delay = 4.07 − 4.05 = 0.02   ns = 20 ps 
 6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
