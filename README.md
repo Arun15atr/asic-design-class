@@ -3393,3 +3393,110 @@ Screenshot of nwell rules
 
 ![day3p234](https://github.com/user-attachments/assets/6cd6bc0d-b8a5-42c9-991c-d9025658197c)
 
+Incorrectly implemented nwell.4 rule no drc violation even though no tap present in nwell
+
+![day3p235](https://github.com/user-attachments/assets/729152d6-cf46-4afd-b3da-431671dbe5fc)
+
+
+New commands inserted in sky130A.tech file to update drc
+
+
+![day3p236](https://github.com/user-attachments/assets/0b5597ea-3b1e-499f-9a30-b171025eced9)
+
+
+![day3p237](https://github.com/user-attachments/assets/1c85c7a9-c0c7-4dcb-8185-fdd23ffb553f)
+
+
+Commands to run in tkcon window
+```
+# Loading updated tech file
+tech load sky130A.tech
+
+# Change drc style to drc full
+drc style drc(full)
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+Screenshot of magic window with rule implemented
+
+![day3p238](https://github.com/user-attachments/assets/ac61c880-a2ae-40ac-86f8-2a7eafc88805)
+
+</details>
+
+
+<details>
+<summary>Lab 4 </summary>
+<br>
+Theory
+	
+Implementation
+
+    Section 4 tasks:-
+
+    Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+    Save the finalized layout with custom name and open it.
+    Generate lef from the layout.
+    Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+    Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
+    Run openlane flow synthesis with newly inserted custom inverter cell.
+    Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+    Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
+    Do Post-Synthesis timing analysis with OpenSTA tool.
+    Make timing ECO fixes to remove all violations.
+    Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
+    Post-CTS OpenROAD timing analysis.
+    Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
+
+    Section 4 - Tasks 1 to 4 files, reports and logs can be found in the following folder:
+
+Section 4 - Tasks 1 to 4 (vsdstdcelldesign)
+
+    Section 4 - Task 4 files, reports and logs can be found in the following folder:
+
+Section 4 - Task 4 (src)
+
+    Section 4 - Task 5 files, reports and logs can be found in the following folder:
+
+Section 4 - Task 5 (picorv32a)
+
+    Section 4 - Tasks 6 to 8 & 11 to 13 logs, reports and results can be found in following run folder:
+
+Section 4 - Tasks 6 to 8 & 11 to 13 Run (24-03_10-03)
+
+    Section 4 - Tasks 9 to 11 logs, reports and results can be found in following run folder:
+
+Section 4 - Tasks 9 to 11 Run (25-03_18-52)
+1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+
+Conditions to be verified before moving forward with custom designed cell layout:
+
+    Condition 1: The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks.
+    Condition 2: Width of the standard cell should be odd multiples of the horizontal track pitch.
+    Condition 3: Height of the standard cell should be even multiples of the vertical track pitch.
+
+Commands to open the custom inverter layout
+
+```
+# Change directory to vsdstdcelldesign
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+Screenshot of tracks.info of sky130_fd_sc_hd
+
+![day4-1](https://github.com/user-attachments/assets/8ed7e37c-c3f2-416a-82ba-baea774c4a23)
+
+Commands for tkcon window to set grid as tracks of locali layer
+```
+# Get syntax for grid command
+help grid
+
+# Set grid values accordingly
+grid 0.46um 0.34um 0.23um 0.17um
+```
+
