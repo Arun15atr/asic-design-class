@@ -3093,5 +3093,72 @@ Screenshots of floorplan def in magic:
 Standards cells legally placed
 ![Screenshot from 2024-11-13 14-39-34](https://github.com/user-attachments/assets/838301f5-9599-4314-a559-cd8db66641f1)
 
+Commands to exit from current run
+```
+# Exit from OpenLANE flow
+exit
 
+# Exit from OpenLANE flow docker sub-system
+exit
+```
+  
+</details>  
 
+	
+<details>
+<summary>Day-3</summary>
+<br>
+	
+# TASK3 : Design library cell using Magic Layout and ngspice characterization
+Theory
+Implementation
+
+Section 3 tasks:-
+
+    1.Clone custom inverter standard cell design from github repository: Standard cell design and characterization using OpenLANE flow.
+    2.Load the custom inverter layout in magic and explore.
+    3.Spice extraction of inverter in magic.
+    4.Editing the spice model file for analysis through simulation.
+    5.Post-layout ngspice simulations.
+    6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+     Section 3 - Tasks 1 to 5 files, reports and logs can be found in the following folder:
+
+     Section 3 - Tasks 1 to 5 (vsdstdcelldesign)
+
+     Section 3 - Task 6 files, reports and logs can be found in the following folder:
+
+   Section 3 - Task 6 (drc_tests)
+
+1. Clone custom inverter standard cell design from github repository
+
+```
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+Screenshot of commands run
+
+![day3-1](https://github.com/user-attachments/assets/7820fd9a-45f1-43cf-b085-42508ed02b13)
+
+2. Load the custom inverter layout in magic and explore.
+   
+Screenshot of custom inverter layout in magic
+
+![day3-2](https://github.com/user-attachments/assets/6fa28e61-84a8-4833-bd61-d6dc910fb649)
+
+NMOS and PMOS identified
