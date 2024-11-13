@@ -3177,5 +3177,57 @@ NMOS source connectivity to VSS (here VGND) verified
 
 Deleting necessary layout part to see DRC error
 
+![day3-7](https://github.com/user-attachments/assets/e2bcd0c5-8527-43bd-9c86-e8cbe9fe950c)
 
+3. Spice extraction of inverter in magic.
+Commands for spice extraction of the custom inverter layout to be used in tkcon window of magic
+
+```
+# Check current directory
+pwd
+
+# Extraction command to extract to .ext format
+extract all
+
+# Before converting ext to spice this command enable the parasitic extraction also
+ext2spice cthresh 0 rthresh 0
+
+# Converting to ext to spice
+ext2spice
+```
+Screenshot of tkcon window after running above commands
+
+![day3-8](https://github.com/user-attachments/assets/08b9c89d-222b-4c6e-81a0-2d5be0d4fa43)
+
+Screenshot of created spice file
+
+![day3-9](https://github.com/user-attachments/assets/47945a37-b67c-4983-ae4f-90cf3b1a4133)
+
+4. Editing the spice model file for analysis through simulation.
+
+Measuring unit distance in layout grid
+
+![day3-10](https://github.com/user-attachments/assets/eccd6fe8-9b30-47e5-9cae-8732f6a89e22)
+
+Editing the spice model file for analysis through simulation. Measuring unit distance in layout grid
+
+Final edited spice file ready for ngspice simulation
+
+Post-layout ngspice simulations. Commands for ngspice simulation
+
+![day3-11](https://github.com/user-attachments/assets/00067a12-98c1-41a9-b437-be9c15629d30)
+
+5. Post-layout ngspice simulations.
+Commands for ngspice simulation
+```
+# Command to directly load spice file for simulation to ngspice
+ngspice sky130_inv.spice
+
+# Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
+plot y vs time a
+```
+![day3-12](https://github.com/user-attachments/assets/98cc25f3-e14b-4bba-902f-f84d12420c78)
+
+Screenshot of generated plot
+![day3-13](https://github.com/user-attachments/assets/9e49c5c0-0254-495f-89f2-71afe7e337c0)
 
