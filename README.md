@@ -3332,3 +3332,64 @@ Screenshot of poly rules
 
 ![day3p24](https://github.com/user-attachments/assets/4e3ee44c-d169-4d27-81b1-dce3da1e6b72)
 
+Incorrectly implemented poly.9 rule no drc violation even though spacing < 0.48u
+
+![day3p25](https://github.com/user-attachments/assets/0033743c-22ad-4531-9e61-d170737a5f96)
+
+![day3p26](https://github.com/user-attachments/assets/c7ab9ff8-3865-4b21-8e93-d7718af79577)
+
+New commands inserted in sky130A.tech file to update drc
+
+![day3p27](https://github.com/user-attachments/assets/11377bd9-2c2f-4beb-9f93-1fcac94d035b)
+
+
+![day3p28](https://github.com/user-attachments/assets/c5e38fc5-1b08-40aa-b1cd-390ee875136a)
+
+Commands to run in tkcon window
+```
+# Loading updated tech file
+tech load sky130A.tech
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+![day3p29](https://github.com/user-attachments/assets/0c29b6fb-f4f0-4bf1-b724-22466ada1f10)
+
+Incorrectly implemented difftap.2 simple rule correction
+
+Screenshot of difftap rules
+
+![day3p30](https://github.com/user-attachments/assets/226a0fc2-3317-46b2-a971-b2ed92d1d1f0)
+
+Incorrectly implemented difftap.2 rule no drc violation even though spacing < 0.42u
+
+![day3p231](https://github.com/user-attachments/assets/34f7d844-cf49-4b60-8405-72a98588ece3)
+
+New commands inserted in sky130A.tech file to update drc
+
+![day3p232](https://github.com/user-attachments/assets/e816c73a-d96e-4767-b18a-f3ba487a17d6)
+
+Commands to run in tkcon window
+```
+# Loading updated tech file
+tech load sky130A.tech
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+Screenshot of magic window with rule implemented
+
+![day3p233](https://github.com/user-attachments/assets/f2f8bc4c-e017-4ba4-b6b2-304fa506f3cb)
+
+Incorrectly implemented nwell.4 complex rule correction
+
+Screenshot of nwell rules
+
+![day3p234](https://github.com/user-attachments/assets/6cd6bc0d-b8a5-42c9-991c-d9025658197c)
+
