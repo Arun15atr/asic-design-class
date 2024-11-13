@@ -3162,3 +3162,20 @@ Screenshot of custom inverter layout in magic
 ![day3-2](https://github.com/user-attachments/assets/6fa28e61-84a8-4833-bd61-d6dc910fb649)
 
 NMOS and PMOS identified
+
+![day3-3](https://github.com/user-attachments/assets/fbcf7b80-79a5-447b-86a4-f1a96caa435b)
+
+![day3-4](https://github.com/user-attachments/assets/9828a2e6-b6ed-4ad6-9f46-aa98b8ab18fa)
+
+PMOS source connectivity to VDD (here VPWR) verified:
+
+![day3-5](https://github.com/user-attachments/assets/2b7bbe17-ff46-4764-80d3-a61a14268f13)
+
+NMOS source connectivity to VSS (here VGND) verified
+
+![day3-6](https://github.com/user-attachments/assets/580562e4-0f08-48ca-b453-c18c97931d9d)
+
+Deleting necessary layout part to see DRC error
+
+
+
