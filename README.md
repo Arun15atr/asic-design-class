@@ -3177,7 +3177,9 @@ NMOS source connectivity to VSS (here VGND) verified
 
 Deleting necessary layout part to see DRC error
 
-![day3-7](https://github.com/user-attachments/assets/e2bcd0c5-8527-43bd-9c86-e8cbe9fe950c)
+![day3-7](https://github.com/user-attachments/assets/b3b77898-c194-475c-adb6-19af2a7bb381)
+
+
 
 3. Spice extraction of inverter in magic.
 Commands for spice extraction of the custom inverter layout to be used in tkcon window of magic
@@ -3221,13 +3223,65 @@ Post-layout ngspice simulations. Commands for ngspice simulation
 Commands for ngspice simulation
 ```
 # Command to directly load spice file for simulation to ngspice
-ngspice sky130_inv.spice
+ngspice sky130_arun_inv.spice
 
 # Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
 plot y vs time a
 ```
-![day3-12](https://github.com/user-attachments/assets/98cc25f3-e14b-4bba-902f-f84d12420c78)
+![day3-arun12](https://github.com/user-attachments/assets/bd7b6d6b-ec96-405c-b6ad-3011750e93a2)
 
 Screenshot of generated plot
-![day3-13](https://github.com/user-attachments/assets/9e49c5c0-0254-495f-89f2-71afe7e337c0)
+![day3_arun_graph13](https://github.com/user-attachments/assets/804a488c-67ca-436c-a4bf-c8965fa20e30)
 
+Rise transition time calculation
+ Rise   transition   time = Time   taken   for   output   to   rise   to   80 % − Time   taken   for    output   to   rise   to   20 %
+20 %   of   output = 660   m V
+80 %   of   output = 2.64   V 
+
+20% Screenshots
+
+![Screenshot from 2024-11-13 19-39-48](https://github.com/user-attachments/assets/c1067175-be92-49ad-a883-ef8ea6289ab2)
+
+![day3-14](https://github.com/user-attachments/assets/1cd8514c-5bc9-40b4-befe-6c50f68d6619)
+
+80% Screenshots
+
+![eightperc1](https://github.com/user-attachments/assets/7d958c31-6e1b-4713-8f4b-88f7c57b49f7)
+
+![eightyper](https://github.com/user-attachments/assets/05e51052-d950-4b80-84b7-dd7ecf6a0dc5)
+20% fall
+
+![twentyfall](https://github.com/user-attachments/assets/0f6d1921-48ab-42e6-8ec6-c74cf90a622b)
+
+80% fall
+![eightyfall](https://github.com/user-attachments/assets/0fc6186b-9403-4165-88c6-56a0bce88898)
+
+![finalfall](https://github.com/user-attachments/assets/b71135f3-bf08-456f-9bc2-046578a07d5f)
+
+fall transition time = 4.0955 − 4.0536 = 0.0419   n s = 41.9   ps
+Rise Cell Delay Calculation
+ Rise   Cell   Delay = Time   taken   for   output   to   rise   to   50 % − Time   taken   for  input   to   fall   to   50 %
+50 %   o f   3.3   V = 1.65   V 
+
+50% Screenshots
+
+![fiftypercter](https://github.com/user-attachments/assets/b1d8229f-3aa4-4c6e-8c27-995fc832f4cd)
+
+![fiftypercgraph](https://github.com/user-attachments/assets/014c0c99-ecc8-41db-a1d5-445c7241cdba)
+ Rise   Cell   Delay = 2.21144 − 2.15008 = 0.06136 ns = 61.36   ps 
+ Fall Cell Delay Calculation
+Fall   Cell   Delay = Time taken for output to fall to 50 % − Time taken for input to rise to 50 %
+50 %   o f   3.3   V = 1.65 V 
+
+50% Screenshots
+
+![Screenshot from 2024-11-13 20-21-22](https://github.com/user-attachments/assets/9ff096ca-1674-4cab-bbf7-832c58173551)
+
+![Screenshot from 2024-11-13 20-20-45](https://github.com/user-attachments/assets/044bceba-0700-4f6a-867f-560cb50d167e)
+
+ Fall  Cell   Delay = 4.07 − 4.05 = 0.02   ns = 20 ps 
+6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+Link to Sky130 Periphery rules: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html
+
+Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
