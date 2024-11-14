@@ -3719,3 +3719,7 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 ```
 
+![day4-27](https://github.com/user-attachments/assets/37e62769-2ae7-45ed-81f8-a49004699e10)
+
+Screenshot of custom inverter inserted in placement def with proper abutment
+
