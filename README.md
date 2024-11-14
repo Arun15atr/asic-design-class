@@ -3804,3 +3804,19 @@ echo $::env(SYNTH_DRIVING_CELL)
 run_synthesis
 ```
 
+![day4-32](https://github.com/user-attachments/assets/8920fbaf-0940-46f4-b612-2ba21813b115)
+
+![day4-33](https://github.com/user-attachments/assets/aa2f9548-c87b-4421-b040-38c387150405)
+
+Commands to run STA in another terminal
+```
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Command to invoke OpenSTA tool with script
+sta pre_sta.conf
+```
+![day4-34](https://github.com/user-attachments/assets/57165693-dc31-419c-9a32-23dbd93ef831)
+`
+![day4-35](https://github.com/user-attachments/assets/8a55a71c-fd92-4605-998b-08d71b289bd3)
+
