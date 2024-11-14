@@ -3499,4 +3499,51 @@ help grid
 # Set grid values accordingly
 grid 0.46um 0.34um 0.23um 0.17um
 ```
+Screenshot of commands run
+
+![day4-2](https://github.com/user-attachments/assets/2a8754ac-b7f5-45e4-867c-ecea60f9846f)
+
+Condition 1 verified
+
+![day4-3](https://github.com/user-attachments/assets/36f1a65d-8d8f-4cf5-966c-36d1ab843ec5)
+
+Condition 2 verified
+Horizontal   track   pitch = 0.46 um 
+
+![day4-4](https://github.com/user-attachments/assets/a471fbe9-3371-431c-bb25-aa022a77033b)
+
+ Width   of   standard   cell = 1.38 um = 0.46 ∗ 3
+
+Condition 3 verified
+Vertical track pitch = 0.34 um
+
+![day4-5](https://github.com/user-attachments/assets/8125f260-d793-4278-9925-be3e1d099287)
+
+ Height of   standard cell = 2.72 um = 0.34 ∗ 8 
+ 
+ 2. Save the finalized layout with custom name and open it.
+ Command for tkcon window to save the layout with custom name
+ ```
+# Command to save as
+save sky130_arun_inv.mag
+```
+Command to open the newly saved layout
+```
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_arun_inv.mag &
+```
+Screenshot of newly saved layout
+
+![day4-6](https://github.com/user-attachments/assets/7faee343-2ea7-41fd-ac44-39a2205127b0)
+
+3. Generate lef from the layout.
+Command for tkcon window to write lef
+```
+# lef command
+lef write
+```
+![day4-7](https://github.com/user-attachments/assets/56a08739-8c0c-44eb-9685-001fa1f28bde)
+
+Screenshot of newly created lef file
+
 
