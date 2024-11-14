@@ -3580,15 +3580,18 @@ Edited config.tcl to include the added lef and change library to ones we added i
 ![day4-10](https://github.com/user-attachments/assets/db8adb47-b2d4-44c7-819a-9848424308ae)
 
 6. Run openlane flow synthesis with newly inserted custom inverter cell.
+   
    Commands to invoke the OpenLANE flow include new lef and perform synthesis
-   ```
-   # Change directory to openlane flow directory
-cd Desktop/work/tools/openlane_working_dir/openlane
-
-# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
-# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
-docker
+   
 ```
+   # Change directory to openlane flow directory
+  cd Desktop/work/tools/openlane_working_dir/openlane
+
+   # alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER)     efabless/openlane:v0.21'
+  # Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+  docker
+   ```
+
 ```
 # Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
 ./flow.tcl -interactive
@@ -3605,6 +3608,7 @@ add_lefs -src $lefs
 
 # Now that the design is prepped and ready, we can run synthesis using following command
 run_synthesis
+
 ```
 Screenshots of commands run
 
@@ -3696,6 +3700,7 @@ Screenshots of commands run
 ![day4-24](https://github.com/user-attachments/assets/7c5a414d-6393-47e1-b4fa-a8d1b3a1abf9)
 
 Now that floorplan is done we can do placement using following command
+
 ```
 # Now we are ready to run placement
 run_placement
@@ -3705,6 +3710,7 @@ run_placement
 ![day4-26](https://github.com/user-attachments/assets/26e8c6dc-9858-4c29-8ee4-253296e88bc3)
 
 Commands to load placement def in magic in another terminal
+
 ```
 # Change directory to path containing generated placement def
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_11-34/results/placement/
