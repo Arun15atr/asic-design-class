@@ -3723,7 +3723,8 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![day4-27](https://github.com/user-attachments/assets/37e62769-2ae7-45ed-81f8-a49004699e10)
 
 Screenshot of custom inverter inserted in placement def with proper abutment
-new photo to be upload
+
+![inv](https://github.com/user-attachments/assets/120968bd-243c-488e-a854-ebd88eb24ad9)
 
 9. Do Post-Synthesis timing analysis with OpenSTA tool.
 Since we are having 0 wns after improved timing run we are going to do timing analysis on initial run of synthesis which has lots of violations and no parameters were added to improve timing
@@ -3757,6 +3758,11 @@ set ::env(SYNTH_SIZING) 1
 run_synthesis
 ```
 ![day4-28](https://github.com/user-attachments/assets/23b50946-9b95-4005-ae93-c8474327ad3b)
+
+Newly created pre_sta.conf for STA analysis in openlane directory
+
+![presta](https://github.com/user-attachments/assets/80a0f0ca-ce2f-4527-a3bc-0ddef0be45ed)
+
 
 Commands to run STA in another terminal
 ```
