@@ -3581,3 +3581,135 @@ Edited config.tcl to include the added lef and change library to ones we added i
 
 6. Run openlane flow synthesis with newly inserted custom inverter cell.
    Commands to invoke the OpenLANE flow include new lef and perform synthesis
+   ```
+   # Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+```
+```
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Adiitional commands to include newly added lef to openlane flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+Screenshots of commands run
+
+![day4-11](https://github.com/user-attachments/assets/97773dbe-7bff-4dca-9fa4-638340613754)
+
+![day4-12](https://github.com/user-attachments/assets/dd76b1ad-ac3f-422e-86dd-252fc37fa3c0)
+
+![day4-13](https://github.com/user-attachments/assets/6eebc26b-706e-490d-8a91-b3cc324150ad)
+
+7. Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+
+Noting down current design values generated before modifying parameters to improve timing
+
+![day4-14](https://github.com/user-attachments/assets/67b83caf-6482-42a3-8bc3-10a8fc4ba589)
+
+![day4-15](https://github.com/user-attachments/assets/8f9e29bf-7618-4756-a52c-ae8c4e94fed8)
+
+Commands to view and change parameters to improve timing and run synthesis
+
+```
+# Now once again we have to prep design so as to update variables
+prep -design picorv32a -tag 24-03_10-03 -overwrite
+
+# Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to display current value of variable SYNTH_STRATEGY
+echo $::env(SYNTH_STRATEGY)
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+# Command to display current value of variable SYNTH_BUFFERING to check whether it's enabled
+echo $::env(SYNTH_BUFFERING)
+
+# Command to display current value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Command to display current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+Screenshots of commands run
+
+![day4-16](https://github.com/user-attachments/assets/e6ac56c7-a0dd-4b04-9792-71c359500030)
+
+![day4-17](https://github.com/user-attachments/assets/ede47137-6019-4de5-b7e6-1a28d0011c75)
+
+Comparing to previously noted run values area has increased and worst negative slack has become 0
+
+![day4-18](https://github.com/user-attachments/assets/3df259bb-8565-485b-9322-9fdd4b7c960b)
+
+![day4-19](https://github.com/user-attachments/assets/e507e4d2-2ffd-4ed0-87ab-2ffcf4f68719)
+
+Screenshot of merged.lef in tmp directory with our custom inverter as macro
+
+![day4-20](https://github.com/user-attachments/assets/2e673999-f863-48a4-a698-82a02a958085)
+
+8. Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
+
+```
+# Now we can run floorplan
+run_floorplan
+```
+Screenshots of command run
+
+![day4-21](https://github.com/user-attachments/assets/54b71567-d712-472e-a240-0ec99cece77c)
+
+![day4-22](https://github.com/user-attachments/assets/808c7434-3c4f-49d4-8576-be2b23000456)
+
+Since we are facing unexpected un-explainable error while using run_floorplan command, we can instead use the following set of commands available based on information from Desktop/work/tools/openlane_working_dir/openlane/scripts/tcl_commands/floorplan.tcl and also based on Floorplan Commands section in Desktop/work/tools/openlane_working_dir/openlane/docs/source/OpenLANE_commands.md
+
+```
+# Follwing commands are alltogather sourced in "run_floorplan" command
+init_floorplan
+place_io
+tap_decap_or
+```
+Screenshots of commands run
+
+![day4-23](https://github.com/user-attachments/assets/c7700f67-6205-43f7-b970-a570a83bd2a3)
+
+![day4-24](https://github.com/user-attachments/assets/7c5a414d-6393-47e1-b4fa-a8d1b3a1abf9)
+
+Now that floorplan is done we can do placement using following command
+```
+# Now we are ready to run placement
+run_placement
+```
+![day4-25](https://github.com/user-attachments/assets/108d1ace-4b65-4c0f-90ad-f25584574ac7)
+
+![day4-26](https://github.com/user-attachments/assets/26e8c6dc-9858-4c29-8ee4-253296e88bc3)
+
+Commands to load placement def in magic in another terminal
+```
+# Change directory to path containing generated placement def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_11-34/results/placement/
+
+# Command to load the placement def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
