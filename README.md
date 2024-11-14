@@ -3429,7 +3429,7 @@ Screenshot of magic window with rule implemented
 
 
 <details>
-<summary>Lab 4 </summary>
+<summary>day 4 </summary>
 <br>
 Theory
 	
@@ -3546,4 +3546,38 @@ lef write
 
 Screenshot of newly created lef file
 
+![day4-8](https://github.com/user-attachments/assets/d77c7b8d-170f-4521-ad96-f85a3befcdea)
 
+```
+# Copy lef file
+cp sky130_arun_inv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# List and check whether it's copied
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# Copy lib files
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# List and check whether it's copied
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+
+![day4-9](https://github.com/user-attachments/assets/73747a66-e430-4965-ab40-46c6eed24d3b)
+
+5. Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
+
+Commands to be added to config.tcl to include our custom cell in the openlane flow
+```
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+```
+Edited config.tcl to include the added lef and change library to ones we added in src directory
+
+![day4-10](https://github.com/user-attachments/assets/db8adb47-b2d4-44c7-819a-9848424308ae)
+
+6. Run openlane flow synthesis with newly inserted custom inverter cell.
+   Commands to invoke the OpenLANE flow include new lef and perform synthesis
