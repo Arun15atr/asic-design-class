@@ -4035,3 +4035,63 @@ unset ::env(LIB_CTS)
 # With placement done we are now ready to run CTS
 run_cts
 ```
+![day4-u24](https://github.com/user-attachments/assets/c28871a1-465c-47f6-88f5-d667457f9cbe)
+
+![day4-u25](https://github.com/user-attachments/assets/61fed729-5402-47b0-8470-f20fdda6f424)
+
+![day4-u26](https://github.com/user-attachments/assets/06f93846-d3b0-4a67-9479-6b50232bf675)
+
+![day4-u27](https://github.com/user-attachments/assets/ac8dee1d-3c9f-45a7-81c7-a5d97496b7a3)
+
+![day4-u28](https://github.com/user-attachments/assets/58f5cdde-45a2-4203-9b98-3fe84fe806cd)
+
+![day4-u29](https://github.com/user-attachments/assets/8ba3fad3-aee4-431b-9140-923ad1c95fdc)
+
+![day4-u30](https://github.com/user-attachments/assets/a0bfda6d-d78c-4ffa-8681-3f8c06680991)
+
+12. Post-CTS OpenROAD timing analysis.
+    
+Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+
+```
+# Command to run OpenROAD tool
+openroad
+
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/25-03_18-52/tmp/merged.lef
+
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/25-03_18-52/results/cts/picorv32a.cts.def
+
+# Creating an OpenROAD database to work with
+write_db pico_cts.db
+
+# Loading the created database in OpenROAD
+read_db pico_cts.db
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/25-03_18-52/results/synthesis/picorv32a.synthesis_cts.v
+
+# Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+# Link design and library
+link_design picorv32a
+
+# Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+# Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+# Check syntax of 'report_checks' command
+help report_checks
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Exit to OpenLANE flow
+exit
+```
+Screenshots of commands run and timing report generated
+
