@@ -3149,11 +3149,12 @@ cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/
 ls
 
 # Command to open custom inverter layout in magic
-magic -T sky130A.tech sky130_inv.mag &
+magic -T sky130A.tech sky130_arun_inv.mag &
 ```
 Screenshot of commands run
 
-![day3-1](https://github.com/user-attachments/assets/7820fd9a-45f1-43cf-b085-42508ed02b13)
+![day32-1](https://github.com/user-attachments/assets/124eb8e9-76e2-4d13-a9fc-452c0e9b9a3b)
+
 
 2. Load the custom inverter layout in magic and explore.
    
@@ -3671,7 +3672,7 @@ Comparing to previously noted run values area has increased and worst negative s
 
 Screenshot of merged.lef in tmp directory with our custom inverter as macro
 
-![day4-20](https://github.com/user-attachments/assets/2e673999-f863-48a4-a698-82a02a958085)
+![day42-20](https://github.com/user-attachments/assets/ad18ef76-3cbf-49a2-877c-5edb491cbf4f)
 
 8. Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
 
