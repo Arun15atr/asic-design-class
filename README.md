@@ -4095,10 +4095,6 @@ exit
 ```
 Screenshots of commands run and timing report generated
 
-![12-1](https://github.com/user-attachments/assets/c74a9313-f20e-4f88-9986-c935bbc9abb4)
-
-![12-2](https://github.com/user-attachments/assets/c740a6a9-e1a5-4d79-a74e-98434e1ab54d)
-
 13. Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
 
 Commands to be run in OpenLANE flow to do OpenROAD timing analysis after changing CTS_CLK_BUFFER_LIST
@@ -4178,12 +4174,6 @@ echo $::env(CTS_CLK_BUFFER_LIST)
 
 
 running these commands will give following results:
-
-![13-1](https://github.com/user-attachments/assets/03c71c22-3d5b-4775-994f-673bd95e6203)
-
-![13-2](https://github.com/user-attachments/assets/1a2652dd-fee5-4d0f-9091-7db178be74a5)
-
-![13-3](https://github.com/user-attachments/assets/90180e66-17b9-4bac-9c6c-50bd2ecec9a6)
 
 
 </details>
