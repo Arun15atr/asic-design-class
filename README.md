@@ -3430,7 +3430,7 @@ Screenshot of magic window with rule implemented
 
 
 <details>
-<summary>day 4 </summary>
+<summary>Day-4 </summary>
 <br>
 Theory
 	
@@ -4098,7 +4098,7 @@ Screenshots of commands run and timing report generated
 </details>
 
 <details>
-<summary>Lab 5</summary>
+<summary>Day- 5</summary>
 <br>
 	
 # TASK 5 - Final steps for RTL2GDS using tritonRoute and openSTA
