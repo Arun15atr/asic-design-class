@@ -4093,6 +4093,15 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pins} -forma
 # Exit to OpenLANE flow
 exit
 ```
+screenshots
+
+![12-1](https://github.com/user-attachments/assets/c4f33ed9-16c6-4301-9a64-e8f577fec9ac)
+
+![12-2](https://github.com/user-attachments/assets/55bfce62-ad3e-412e-8054-d5db40274660)
+
+![12-3](https://github.com/user-attachments/assets/9e92bddd-49dd-4a9f-b52d-68e4025b7f18)
+
+
 
 13. Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
 
