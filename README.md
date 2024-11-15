@@ -4058,10 +4058,10 @@ Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrat
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/14-11_20-07/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/25-03_18-52/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/14-11_20-07/results/cts/picorv32a.cts.def
+read_def /openLANE_flow/designs/picorv32a/runs/25-03_18-52/results/cts/picorv32a.cts.def
 
 # Creating an OpenROAD database to work with
 write_db pico_cts.db
@@ -4070,7 +4070,7 @@ write_db pico_cts.db
 read_db pico_cts.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/14-11_20-07/results/synthesis/picorv32a.synthesis_cts.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/25-03_18-52/results/synthesis/picorv32a.synthesis_cts.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -4093,7 +4093,6 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pins} -forma
 # Exit to OpenLANE flow
 exit
 ```
-Screenshots of commands run and timing report generated
 
 13. Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
 
@@ -4124,10 +4123,10 @@ echo $::env(CTS_CLK_BUFFER_LIST)
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/14-11_20-07/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/25-03_18-52/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/14-11_20-07/results/cts/picorv32a.cts.def
+read_def /openLANE_flow/designs/picorv32a/runs/25-03_18-52/results/cts/picorv32a.cts.def
 
 # Creating an OpenROAD database to work with
 write_db pico_cts1.db
@@ -4136,7 +4135,7 @@ write_db pico_cts1.db
 read_db pico_cts.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/14-11_20-07/results/synthesis/picorv32a.synthesis_cts.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/25-03_18-52/results/synthesis/picorv32a.synthesis_cts.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -4171,9 +4170,6 @@ set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_
 # Checking current value of 'CTS_CLK_BUFFER_LIST'
 echo $::env(CTS_CLK_BUFFER_LIST)
 ```
-
-
-running these commands will give following results:
 
 
 </details>
