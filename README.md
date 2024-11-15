@@ -4095,6 +4095,11 @@ exit
 ```
 Screenshots of commands run and timing report generated
 
+![12-1](https://github.com/user-attachments/assets/c74a9313-f20e-4f88-9986-c935bbc9abb4)
+
+![12-2](https://github.com/user-attachments/assets/c740a6a9-e1a5-4d79-a74e-98434e1ab54d)
+
+
 </details>
 
 <details>
