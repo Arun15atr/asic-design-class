@@ -4400,7 +4400,8 @@ Screenshots of commands run and timing report generated
 <details>
 <summary>Lab 13</summary>
 <br>
-## TASK: Perform the following tasks: 1) Instal OpenROAD flow Scripts on individual machine (username should be clearly visible) 2) Study about OpenROAD basic Flow setup and Macro Flow Setup 3) Clear documentation Routed Database, QOR and heat Map for your BabySoC"
+	
+##  TASK: Perform the following tasks: 1) Instal OpenROAD flow Scripts on individual machine (username should be clearly visible) 2) Study about OpenROAD basic Flow setup and Macro Flow Setup 3) Clear documentation Routed Database, QOR and heat Map for your BabySoC"
 Installing and setting up ORFS
 The setup.sh script installs all of the dependencies, including OpenROAD dependencies, if they are not already installed.
 
