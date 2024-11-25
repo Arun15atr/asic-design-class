@@ -4438,4 +4438,51 @@ make gui_final
 
 ![l4](https://github.com/user-attachments/assets/19152ff2-8480-4260-9d70-5b762e026e50)
 
+```
+├── OpenROAD-flow-scripts             
+│   ├── docker           -> It has Docker based installation, run scripts and all saved here
+│   ├── docs             -> Documentation for OpenROAD or its flow scripts.  
+│   ├── flow             -> Files related to run RTL to GDS flow  
+|   ├── jenkins          -> It contains the regression test designed for each build update
+│   ├── tools            -> It contains all the required tools to run RTL to GDS flow
+│   ├── etc              -> Has the dependency installer script and other things
+│   ├── setup_env.sh     -> Its the source file to source all our OpenROAD rules to run the RTL to GDS flow
+```
+Now go to terminal and run the following commands:
+```
+cd OpenROAD-flow-scripts
+source env.sh
+cd flow
+```
+Commands for synthesis:
+```
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
+```
+![l5](https://github.com/user-attachments/assets/695fe96a-cd66-4c80-a563-2b85a3618a2c)
 
+![l6](https://github.com/user-attachments/assets/2f6ab271-170c-4009-a5df-86a3ee99dc54)
+
+Synthesis netlist:
+
+![l7](https://github.com/user-attachments/assets/25d12762-6044-4d2d-b7d5-a60820f4240c)
+
+Synthesis log:
+
+![l8](https://github.com/user-attachments/assets/f33db293-4ea3-40f1-8ff2-09a7b3db178a)
+
+Synthesis Check:
+
+![l9](https://github.com/user-attachments/assets/773294c2-76d1-48fd-ada0-bbdcf544573c)
+
+Synthesis Stats:
+
+![l10](https://github.com/user-attachments/assets/54e5dbb6-487e-4a99-a866-b4d2cafe8f36)
+
+![l11](https://github.com/user-attachments/assets/94aab525-d8d5-43ab-8fad-5105172540a3)
+
+![l12](https://github.com/user-attachments/assets/050879e5-c2a4-4626-bbb5-54ddecb02ab2)
+
+Commands for floorplan:
+```
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk floorplan
+```
