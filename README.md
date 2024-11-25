@@ -4398,6 +4398,43 @@ Screenshots of commands run and timing report generated
 </details>
 
 <details>
-<summary>LAB-13</summary>
+<summary>Lab 13</summary>
 <br>
-## TASK:
+## TASK: Perform the following tasks: 1) Instal OpenROAD flow Scripts on individual machine (username should be clearly visible) 2) Study about OpenROAD basic Flow setup and Macro Flow Setup 3) Clear documentation Routed Database, QOR and heat Map for your BabySoC"
+Installing and setting up ORFS
+The setup.sh script installs all of the dependencies, including OpenROAD dependencies, if they are not already installed.
+
+Supported configurations are: CentOS 7, Ubuntu 20.04, Ubuntu 22.04, Ubuntu 22.04(aarch64), RHEL 8, Debian 10 and Debian 11.
+
+```
+git clone --recursive https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts
+cd OpenROAD-flow-scripts
+sudo ./setup.sh
+```
+# Build
+```
+./build_openroad.sh --local
+```
+:::{Note} There is a build_openroad.log file that is generated with every build in the main directory. In case of filing issues, it can be uploaded in the "Relevant log output" section of OpenROAD-flow-scripts repo issue form. :::
+
+# Verify Installation
+The binaries should be available on your $PATH after setting up the environment. The make command runs from RTL-GDSII generation for default design gcd with nangate45 PDK
+```
+source ./env.sh
+yosys -help
+openroad -help
+cd flow
+make
+```
+You can view final layout images in OpenROAD GUI using this command.
+```
+make gui_final
+```
+
+![l3](https://github.com/user-attachments/assets/835cd3e8-c35e-4fe6-a903-b1adbe3a4742)
+
+![l1](https://github.com/user-attachments/assets/73d05a56-fda3-4661-8b0b-4adaed13db4b)
+
+![l4](https://github.com/user-attachments/assets/19152ff2-8480-4260-9d70-5b762e026e50)
+
+
