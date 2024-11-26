@@ -4578,3 +4578,24 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk route
 ![route1](https://github.com/user-attachments/assets/413e1696-90e6-462c-ac61-11c6a399e679)
 
 ![route2](https://github.com/user-attachments/assets/21458ec8-4a8c-422e-b4aa-8c5a1efbf16b)
+
+![grt](https://github.com/user-attachments/assets/af102eb2-d279-4dce-9ec6-047539f9a703)
+
+routing file :-
+
+![5_2_route](https://github.com/user-attachments/assets/c02b3975-0e8d-4ce2-a78c-a8c0e81b9a8b)
+
+![5_2_ROUTE2](https://github.com/user-attachments/assets/719500f4-85b3-4ccd-bee3-9ffaedaa1169)
+
+MERGE FILE:
+
+![merge](https://github.com/user-attachments/assets/58d20a53-698e-41cb-9439-ba46c5763dfe)
+
+final report.log file:
+
+![finalreport](https://github.com/user-attachments/assets/3923256f-190f-4172-ab71-f328d641fb7d)
+
+synthesis statistics:
+
+
+
