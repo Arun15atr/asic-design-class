@@ -4464,7 +4464,8 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
 
 Synthesis netlist:
 
-![l7](https://github.com/user-attachments/assets/25d12762-6044-4d2d-b7d5-a60820f4240c)
+![synthesisnetlist](https://github.com/user-attachments/assets/33a33dc1-4cac-4249-b26c-599df08a0eda)
+
 
 Synthesis log:
 
@@ -4472,17 +4473,20 @@ Synthesis log:
 
 Synthesis Check:
 
-![l9](https://github.com/user-attachments/assets/773294c2-76d1-48fd-ada0-bbdcf544573c)
+![synthesischeck](https://github.com/user-attachments/assets/ff64d53a-7499-423f-9550-7e52dc94a753)
 
 Synthesis Stats:
 
-![l10](https://github.com/user-attachments/assets/54e5dbb6-487e-4a99-a866-b4d2cafe8f36)
+![synthesisstat-1](https://github.com/user-attachments/assets/4e882d6a-f4ff-494d-ace0-488a2dac34af)
 
-![l11](https://github.com/user-attachments/assets/94aab525-d8d5-43ab-8fad-5105172540a3)
-
-![l12](https://github.com/user-attachments/assets/050879e5-c2a4-4626-bbb5-54ddecb02ab2)
+![synthesisstat-2](https://github.com/user-attachments/assets/356585a1-5db2-4301-89ce-928641159ae9)
 
 Commands for floorplan:
 ```
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk floorplan
 ```
+![floorplan1](https://github.com/user-attachments/assets/f370f1e1-45a6-40ce-8169-6178f1166e17)
+
+![floorplan2](https://github.com/user-attachments/assets/34984990-b6fe-4ed8-8250-7e6053b460c8)
+
+![floorplan3](https://github.com/user-attachments/assets/bb79ab6d-898b-4d36-8b4e-0a096e33dca9)
