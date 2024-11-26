@@ -4537,3 +4537,44 @@ make gui_place
 
 ![placement7](https://github.com/user-attachments/assets/19cde86d-a6d3-4b1d-98f5-6c8e40df9ade)
 
+```
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk cts
+```
+![cts1](https://github.com/user-attachments/assets/e1388efd-87be-44ba-a9fc-d373c78567fa)
+
+
+![cts2](https://github.com/user-attachments/assets/a31f0638-35ac-4356-b4aa-8f052f247813)
+
+```
+make gui_cts
+```
+
+![cts3](https://github.com/user-attachments/assets/ddf6243a-5357-4694-8f21-2f4d15699907)
+
+![cts4](https://github.com/user-attachments/assets/7bb2a3e8-6bc3-44d9-961c-49aba264658a)
+
+# Heatmap:
+Placement Density:
+
+![placementdensity](https://github.com/user-attachments/assets/bcbc22b5-8308-403e-a876-476dbc8ce095)
+
+Power Density:
+
+![powerdensity](https://github.com/user-attachments/assets/976ff5eb-bba9-4227-81a2-d043399c22e1)
+
+Estimated Congestion:
+
+![estimatedcongestion](https://github.com/user-attachments/assets/30699bd2-c8bc-410e-8667-f62e369e9326)
+
+IR DROP:
+
+![IRdrop](https://github.com/user-attachments/assets/ee07071f-0d09-406f-b611-b846d2346f27)
+
+
+# Routing :
+```
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk route
+```
+![route1](https://github.com/user-attachments/assets/413e1696-90e6-462c-ac61-11c6a399e679)
+
+![route2](https://github.com/user-attachments/assets/21458ec8-4a8c-422e-b4aa-8c5a1efbf16b)
