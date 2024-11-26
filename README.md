@@ -1,4 +1,4 @@
-# ASIC DESIGN LAB REPOS 
+![placement1](https://github.com/user-attachments/assets/35846838-af52-4bf4-9562-5b5a6063e782)# ASIC DESIGN LAB REPOS 
 <tr></tr>
 
 ****The following tools are used in lab****
@@ -4454,6 +4454,13 @@ cd OpenROAD-flow-scripts
 source env.sh
 cd flow
 ```
+
+## ORFS FILES:
+
+![orfs](https://github.com/user-attachments/assets/aab377ac-087e-4e4c-bdaf-9aeb488c8b48)
+
+
+
 Commands for synthesis:
 ```
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
@@ -4494,3 +4501,39 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk floorplan
 ![floorplan-4](https://github.com/user-attachments/assets/fa1601fa-ee93-4686-b77b-a230f54b4444)
 
 ![floorplan-5](https://github.com/user-attachments/assets/b7769da5-3790-4b98-9c8b-d6a3613f2b09)
+
+Floorplan log:
+
+![FLOORPLANLOG](https://github.com/user-attachments/assets/0c0ca2b9-7d22-4d40-ae1e-b8f00955b514)
+
+Floorplan Report:
+
+![FLOORPLANREPORT](https://github.com/user-attachments/assets/17798b94-3165-4038-90b5-c47985aac1ef)
+
+![floorplanreport2](https://github.com/user-attachments/assets/59fb2851-6a4e-4cef-95be-40762b315cb3)
+
+## PLACEMENT:
+```
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
+```
+![placement1](https://github.com/user-attachments/assets/9ee6b003-b370-43f6-83f0-82cec090a097)
+
+
+![placement2](https://github.com/user-attachments/assets/f9b9d66e-8ee7-44db-9867-32ec2f04a880)
+
+
+![placement3](https://github.com/user-attachments/assets/fe075013-be40-4e38-9382-2768ae0ebaa6)
+
+```
+make gui_place
+```
+![placement4](https://github.com/user-attachments/assets/3e0fddd7-524a-4655-a990-e0e226991ba8)
+
+![placement5](https://github.com/user-attachments/assets/8221dd3a-ef16-4130-9a29-4c0278057bfb)
+
+# Detailed Placement Report:
+
+![placement6](https://github.com/user-attachments/assets/e0e1d65a-75e1-44c9-8684-ab3ee9a48df7)
+
+![placement7](https://github.com/user-attachments/assets/19cde86d-a6d3-4b1d-98f5-6c8e40df9ade)
+
